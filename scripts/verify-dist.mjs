@@ -20,6 +20,15 @@ for(const route of siteRoutes){
  const html=fs.readFileSync(filename,'utf8');const dom=new JSDOM(html,{url:origin+base+route.path.slice(1)+'/'}),document=dom.window.document;
  assert.equal(document.querySelectorAll('h1').length,1,route.path+' must have one h1');
  assert.equal(document.documentElement.lang,route.lang);
+ for(const image of document.querySelectorAll('.article-figure img,.author-photo img')){
+  assert.ok(Number(image.getAttribute('width'))>0&&Number(image.getAttribute('height'))>0,route.path+' image has no reserved dimensions');
+ }
+ for(const frame of document.querySelectorAll('iframe[data-app-src]')){
+  assert.equal(frame.getAttribute('src'),frame.dataset.appSrc,route.path+' must start its app immediately');
+  assert.ok(frame.dataset.appSrc.startsWith('https://'));
+  assert.equal(frame.getAttribute('loading'),'eager');
+  assert.equal(frame.hasAttribute('aria-hidden'),false);
+ }
  const expectedCanonical=origin+base+(route.path==='/'?'':route.path.slice(1)+'/');
  assert.equal(document.querySelector('link[rel=canonical]')?.href,expectedCanonical);
  assert.equal(document.querySelector('meta[property="og:url"]')?.content,expectedCanonical);

@@ -49,7 +49,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
     <h2 id="section-2">Hauptteil</h2>
     <h2 id="section-3">Vorüberlegung</h2>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/stollenbau.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/stollenbau.webp")} alt="Stollenbau" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/stollenbau.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/stollenbau.webp")} alt="Stollenbau" loading="lazy" width="395" height="352" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Beim Schreiben eines
                                         Python-Skripts müssen Strecken und Abbaue einzeln betrachtet werden. Strecken dienten
@@ -106,7 +106,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
     <h2 id="section-5">Umsetzung</h2>
     <h2 id="section-6">Berechnung der Sohlen- und Firstenhöhen</h2>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/StreckeUndAbbauFrage.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/StreckeUndAbbauFrage.webp")} alt="Strecke" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/StreckeUndAbbauFrage.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/StreckeUndAbbauFrage.webp")} alt="Strecke" loading="lazy" width="640" height="458" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Um die Sohlenhöhen
                                         der Strecken Features berechnen zu können, wird die Höheninformation im Bereich der
@@ -122,7 +122,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
                                         Abbaue gleichzeitig den Anfang der Strecken markiert.</p>
       </div></div>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/StreckeUndAbbau_punkte.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/StreckeUndAbbau_punkte.webp")} alt="StreckeUndAbbau" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/StreckeUndAbbau_punkte.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/StreckeUndAbbau_punkte.webp")} alt="StreckeUndAbbau" loading="lazy" width="640" height="458" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Über den searchcursor
                                         werden die Punkte der Features ausgelesen und die Distanzen zur Abbaue- Geometrie
@@ -148,7 +148,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
                                 Zuordnung der Strecken
                                 gespeichert.</p>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/tins_skizze.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/tins_skizze.webp")} alt="Tins skizze" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/tins_skizze.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/tins_skizze.webp")} alt="Tins skizze" loading="lazy" width="682" height="250" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Für die
                                         3D-Visualisierung wurde hier die Funktion extrudebetween gewählt. Dabei werden
@@ -172,7 +172,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
                                 der XY Koordinaten und der Erstellung der Oberflächenmodelle eingegangen werden.</p>
     <h2 id="section-7">TINs Entwurf und Erstellen der 3D Feature Class mit den Streckenkörpern</h2>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/tins_new.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/tins_new.webp")} alt="Tins new skizze" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/tins_new.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/tins_new.webp")} alt="Tins new skizze" loading="lazy" width="660" height="382" /></a></figure>
       </div><div className="illustrated-copy">
         <p> Die meisten Oberflächenanalysen in GIS werden von Raster-
                                         oder
@@ -196,7 +196,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
                                         visualisiert werden.</p>
       </div></div>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/3DStrecke2.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/3DStrecke2.webp")} alt="3DStrecke" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/3DStrecke2.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/3DStrecke2.webp")} alt="3DStrecke" loading="lazy" width="718" height="394" /></a></figure>
       </div><div className="illustrated-copy">
         <p> Modellierung und Erstellung eines dreidimensionalen Objekts
                                         auf der Grundlage der Daten</p>
@@ -216,7 +216,7 @@ export default function BergbauArticle() {return <div className="mobile-network-
       </div></div>
     <h2 id="section-8">Ergebnis und Fazit</h2>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/bergbau/3DStrecke3.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/3DStrecke3.webp")} alt="3DStrecke" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/bergbau/3DStrecke3.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/bergbau/3DStrecke3.webp")} alt="3DStrecke" loading="lazy" width="744" height="527" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Am Ende der Berechnungen und Transformationen haben wir ein
                                         fertiges 3D-Modell</p>

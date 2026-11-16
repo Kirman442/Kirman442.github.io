@@ -4,6 +4,7 @@ import {legalDetails} from './legal-details.js';
 import './legal.css';
 
 const apps = [
+  ['Flussströmung','https://kirman442.github.io/hydrorivers_v2/'],
   ['EnergieAtlas','https://kirman442.github.io/energie-atlas/'],
   ['MobileNetwork','https://mobile-network-map.netlify.app/'],
   ['Unfallkarte Deutschland','https://kirman442.github.io/accidents/'],

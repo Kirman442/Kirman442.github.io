@@ -23,5 +23,5 @@ export function Contours({ className = '' }) {
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="container footer-inner"><p className="footer-motto">Geodaten verstehen. Karten entwickeln.</p><a href={siteUrl(emailHref)}>k.lisochenko@web.de <Arrow /></a><a className="to-top mono" href={siteUrl("#top")}>Nach oben ↑</a></div><div className="container footer-bottom mono"><span>© 2026 Alle Rechte vorbehalten, Kirill Lisochenko</span><nav className="footer-legal" aria-label="Rechtliche Hinweise" lang="de"><a href={siteUrl('/datenschutz/')}>Datenschutz</a><a href={siteUrl('/impressum/')}>Impressum</a></nav></div></footer>;
+  return <footer lang="de" className="site-footer"><div className="container footer-inner"><p className="footer-motto">Geodaten verstehen. Karten entwickeln.</p><a href={siteUrl(emailHref)}>k.lisochenko@web.de <Arrow /></a><a className="to-top mono" href={siteUrl("#top")}>Nach oben ↑</a></div><div className="container footer-bottom mono"><span>© 2026 Alle Rechte vorbehalten, Kirill Lisochenko</span><nav className="footer-legal" aria-label="Rechtliche Hinweise" lang="de"><a href={siteUrl('/datenschutz/')}>Datenschutz</a><a href={siteUrl('/impressum/')}>Impressum</a></nav></div></footer>;
 }

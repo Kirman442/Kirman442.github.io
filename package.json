@@ -12,7 +12,7 @@
     "check": "node scripts/check-source.mjs",
     "check:publication": "node scripts/check-publication.mjs",
     "preview": "node scripts/preview-static.mjs",
-    "test": "node scripts/verify-client.mjs"
+    "test": "node --experimental-vm-modules scripts/verify-client.mjs"
   },
   "dependencies": {
     "react": "18.3.1",

@@ -7,6 +7,7 @@ export const labels = {
   de: { note: 'Technischer Hinweis', notes: 'Technische Hinweise', implementation: 'Implementierung, Messwerte und Code', count: (n) => `${n} technische Hinweise · einzeln oder gemeinsam öffnen`, openAll: 'Alle Hinweise öffnen', closeAll: 'Alle Hinweise schließen', back: '← Zurück zur zuletzt gelesenen Stelle', backStory: '↑ Zurück zur Projektgeschichte', description: 'Details zur Implementierung und zu den Grundlagen der Vergleiche. Die Links in der Projektgeschichte öffnen jeweils den passenden technischen Hinweis.', live: 'Interaktive Anwendung', separate: 'Separat öffnen', fullscreen: 'Vollbild', closeFullscreen: 'Vollbild schließen', explore: 'Daten hier erkunden oder die Anwendung separat öffnen.', closeCaption: 'Vollbild schließen und zur Projektgeschichte zurückkehren.', map: (t) => `Interaktive Karte: ${t}`, application: (t) => `Interaktive Anwendung: ${t}`, copy: 'Kopieren', copied: 'Kopiert', copyFallback: 'Text zum Kopieren markieren', code: (l) => `Codebeispiel in ${l === 'js' || l === 'javascript' ? 'JavaScript' : l === 'python' ? 'Python' : l}` }
 };
 Object.assign(labels.en, {
+  appDocumentHint: 'Data loading and readiness are shown inside the application.', appError: 'The application reported a loading error.',
   appStartTitle: 'Explore the interactive map', appStartHint: 'Load the map when you are ready to explore the data.', appStart: 'Load map here',
   appDisabled: 'Control page: application disabled', appDisabledHint: 'This copy contains no iframe. The external application is not started.',
   appLoading: 'Loading the application…', appLoadingHint: 'The interactive map is opening here.',
@@ -14,6 +15,7 @@ Object.assign(labels.en, {
   appRetryHint: 'Try reloading it or use Open separately above.', appReload: 'Reload application'
 });
 Object.assign(labels.de, {
+  appDocumentHint: 'Den Ladezustand der Daten zeigt die Anwendung selbst an.', appError: 'Die Anwendung meldet einen Ladefehler.',
   appStartTitle: 'Die interaktive Karte erkunden', appStartHint: 'Karte laden und die Daten selbst erkunden.', appStart: 'Karte hier laden',
   appDisabled: 'Kontrollseite: Anwendung deaktiviert', appDisabledHint: 'Diese Kopie enthält kein iframe. Die externe Anwendung wird nicht gestartet.',
   appLoading: 'Anwendung wird geladen…', appLoadingHint: 'Die interaktive Karte wird hier geöffnet.',
@@ -21,6 +23,7 @@ Object.assign(labels.de, {
   appRetryHint: 'Erneut laden oder oben „Separat öffnen“ verwenden.', appReload: 'Anwendung neu laden'
 });
 labels.ru = {
+  appDocumentHint:'Состояние загрузки данных отображается внутри приложения.',appError:'Приложение сообщило об ошибке загрузки.',
   note:'Техническое пояснение',notes:'Технические пояснения',implementation:'Данные, методика и реализация',
   count:n=>`${n} пояснений · можно открыть отдельно или вместе`,openAll:'Открыть все',closeAll:'Закрыть все',
   back:'← Вернуться к месту чтения',backStory:'↑ Вернуться к основной истории',

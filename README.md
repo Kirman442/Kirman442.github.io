@@ -43,6 +43,22 @@ Der Build erzeugt HTML, Metadaten, Sitemap und Weiterleitungen innerhalb von `/k
 
 `dist/` wird generiert und nicht von Hand bearbeitet. Eingebettete Anwendungen werden unabhängig von diesem Repository veröffentlicht.
 
+## Projektbilder und responsive Vorschauen
+
+1. Das freigegebene Titelbild in `public/assets/` ablegen (bevorzugt WebP, sRGB; für neue Cover etwa 2400 × 1200 Pixel). Das Original außerhalb der Website aufbewahren. Der Generator überschreibt WebP-Originale nicht.
+2. Den Bildpfad in `src/projects.js` eintragen. Für eine neue Geschichte außerdem die Route und die Seite ergänzen. `imagePosition` steuert den Ausschnitt der Karte; das Titelbild wird separat auf der Projektseite positioniert.
+3. Mit Python und Pillow ausführen (Windows):
+
+   ```powershell
+   py -3.11 scripts/prepare-project-images.py
+   ```
+
+   Alternativ: `python scripts/prepare-project-images.py`. Falls Pillow fehlt: `python -m pip install Pillow` in der verwendeten Python-Umgebung.
+
+Der Generator liest den gesamten Projektkatalog, berücksichtigt EXIF-Ausrichtung und erzeugt WebP-Vorschauen mit 160, 256, 384, 640, 960 und 1280 Pixel Breite (Qualität 84, keine Vergrößerung, Seitenverhältnis bleibt erhalten). PNG-Quellen erhalten zusätzlich eine WebP-Fassung mit Qualität 86. Danach im Katalog den WebP-Pfad verwenden. `src/ProjectImage.jsx` wählt mit `srcset` und `sizes` die passende Datei für Kartengröße und Pixeldichte.
+
+`public/assets/previews/` und `src/project-images.json` werden mit eingecheckt. Der Build braucht dadurch kein Python. `npm run check` meldet Projekte ohne vorbereitete oder mit fehlenden Vorschauen. Nach Änderungen: `npm run check`, `npm run build`, `npm test` und Desktop/Mobilansicht prüfen. Titelbilder werden nicht auf Polaroid-Größe verkleinert; nur die Vorschauen.
+
 ## Veröffentlichung
 
 Der Workflow **Publish Karten & Code to kc** wird manuell in GitHub Actions gestartet. Er installiert die Abhängigkeiten, führt die Prüfungen aus und veröffentlicht `dist/` über GitHub Pages. `npm run check:publication` prüft das Zielrepository und meldet offene rechtliche Prüfpunkte; diese Prüfung ist keine rechtliche Freigabe.

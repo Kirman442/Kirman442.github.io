@@ -107,7 +107,7 @@ export default function KunstkartenArticle() {return <div className="mobile-netw
                                 wird in die Karte aufgenommen.
                             </p>
       <div className="illustrated-note"><div className="illustrated-media">
-          <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/koeln1.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/koeln1.webp")} alt="Unbeschriftete Karte von Köln" loading="lazy" /></a></figure>
+          <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/koeln1.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/koeln1.webp")} alt="Unbeschriftete Karte von Köln" loading="lazy" width="620" height="640" /></a></figure>
         </div><div className="illustrated-copy">
           <p>Vollständige
                                         unbeschriftete Karte von Köln</p>
@@ -225,7 +225,7 @@ export default function KunstkartenArticle() {return <div className="mobile-netw
                             </p>
       <div className="media-pair">
         <div className="illustrated-note"><div className="illustrated-media">
-            <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/Berlin_water_grenze.png")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/Berlin_water_grenze.png")} alt="Teil der Spree in Berlin Polygonen" loading="lazy" /></a></figure>
+            <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/Berlin_water_grenze.png")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/Berlin_water_grenze.png")} alt="Teil der Spree in Berlin Polygonen" loading="lazy" width="123" height="156" /></a></figure>
           </div><div className="illustrated-copy">
             <p>Teil
                                         der Spree in Berlin. Hier können Sie
@@ -234,7 +234,7 @@ export default function KunstkartenArticle() {return <div className="mobile-netw
                                         gebildet.</p>
           </div></div>
         <div className="illustrated-note"><div className="illustrated-media">
-            <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/Berlin_water_ohne_grenze.png")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/Berlin_water_ohne_grenze.png")} alt="Teil der Spree in Berlin Multipolygon" loading="lazy" /></a></figure>
+            <figure className="article-figure"><a href={siteUrl("/images/kunstkarten/Berlin_water_ohne_grenze.png")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/kunstkarten/Berlin_water_ohne_grenze.png")} alt="Teil der Spree in Berlin Multipolygon" loading="lazy" width="123" height="158" /></a></figure>
           </div><div className="illustrated-copy">
             <p>Und
                                         hier ist ein Multipolygon</p>

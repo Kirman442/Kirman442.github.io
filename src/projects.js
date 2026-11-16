@@ -1,5 +1,6 @@
 const catalogue = [
-  { id:'energieatlas', title:'EnergieAtlas', category:'Web-GIS', year:'2026', image:'/assets/energieatlas-aerial-coast-v1.png', href:'/projects/energieatlas', description:'Solar- und Windenergie in Deutschland: Anlagenbestand, regionale Vergleiche und modelliertes Dachpotenzial auf unterschiedlichen Maßstabsebenen untersuchen.', tools:'Python / React / TypeScript / MapLibre / ECharts' },
+  { id:'flussstroemung', title:'Flussströmung', category:'Web-GIS', year:'2026', image:'/assets/flussstroemung-cover-vignette.webp', href:'/projects/flussstroemung', description:'Globale Flussnetze in Bewegung: von HydroSHEDS und saisonalen Abflussdaten bis zur animierten Karte.', tools:'Python / GeoParquet / MapLibre / deck.gl / GLSL' },
+  { id:'energieatlas', title:'EnergieAtlas', category:'Web-GIS', year:'2026', image:'/assets/energieatlas-aerial-coast-v1.webp', href:'/projects/energieatlas', description:'Solar- und Windenergie in Deutschland: Anlagenbestand, regionale Vergleiche und modelliertes Dachpotenzial auf unterschiedlichen Maßstabsebenen untersuchen.', tools:'Python / React / TypeScript / MapLibre / ECharts' },
   { id:'mobile', title:'MobileNetwork', category:'Web-GIS', year:'2025 / 2026', image:'/assets/mobile-network.webp', href:'/projects/mobile-network', description:'Über eine Million Tile-Datensätze im Browser. Eine Geschichte über Formate, Verarbeitung und interaktive Karten.', tools:'React / deck.gl / Arrow', featuredHeading:['Große Daten.','Neue Wege zur Karte.'],featuredCaption:'Web-GIS / 42 Länder' },
   { id:'accidents', title:'Unfallkarte Deutschland', category:'Web-GIS', year:'2025', image:'/assets/accidents.webp', href:'/projects/accidents', description:'Verkehrsunfälle sichtbar machen und räumliche Muster erkunden.', tools:'React / Supabase / deck.gl' },
   { id:'unfallatlas', title:'Unfallatlas Deutschland', category:'Web-GIS', year:'2026', image:'/assets/hero-real-world-to-data-v1.webp', href:'/projects/unfallatlas', description:'Von der Unfallkarte zum Analysewerkzeug: Regionen, Zeiträume, Bedingungen und Beteiligte vergleichen.', tools:'React / deck.gl / MapLibre / Arrow', imageStyle:'polaroid',imagePosition:'68% center' },
@@ -14,6 +15,7 @@ const catalogue = [
 
 // Publication dates control the homepage chronology; article-navigation order stays explicit.
 const presentation={
+ flussstroemung:{publishedAt:'2026-11-16',polaroidTilt:0,printCaption:'Flussströmung',imagePosition:'50% 64%'},
  energieatlas:{publishedAt:'2026-11-01',polaroidTilt:0,printCaption:'EnergieAtlas',heroLabel:'Energie',heroCaption:'Sonne, Wind und Regionen',imagePosition:'60% top'},
  mobile:{publishedAt:'2025-04-27',polaroidTilt:3,printCaption:'MobileNetwork'},
  accidents:{publishedAt:'2025-03-30',polaroidTilt:-3.5,printCaption:'Unfallkarte'},

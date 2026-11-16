@@ -1,5 +1,7 @@
 import React from 'react';
-import {SiteHeader,Footer} from './components.jsx';
+import AppShell,{resolveRoute} from './AppShell.jsx';
+import NotFoundPage from './NotFoundPage.jsx';
+import {storyArticles} from './story-articles.jsx';
 import HomePage from './HomePage.jsx';
 import AboutPage from './AboutPage.jsx';
 import FullProject from './FullProject.jsx';
@@ -8,16 +10,12 @@ import LadeinfrastrukturPage from './LadeinfrastrukturPage.jsx';
 import UnfallatlasTrial from './UnfallatlasTrial.jsx';
 import LegalPage from './LegalPage.jsx';
 import EnergieatlasPage from './EnergieatlasPage.jsx';
-import {LocaleProvider} from './locale.jsx';
-import {currentPath,siteUrl} from './site-paths.js';
-import {siteRoutes,legacyRoutes} from './routes.js';
-import './theme.css';
-import './identity.css';
+import FlussstroemungPage from './FlussstroemungPage.jsx';
+import {currentPath} from './site-paths.js';
 export function App({pathname=currentPath()}){
-  const path=legacyRoutes[pathname]||pathname;
-  const route=siteRoutes.find(item=>item.path===path);
+  const {route}=resolveRoute(pathname);
   let page;
-  if(!route)page=<section className="container pending-project"><p className="eyebrow">404</p><h1>Diese Seite wurde nicht gefunden.</h1><a className="button" href={siteUrl('/')}>Zur Projektübersicht ↗</a></section>;
+  if(!route)page=<NotFoundPage/>;
   else if(route.kind==='home')page=<HomePage/>;
   else if(route.kind==='about')page=<AboutPage/>;
   else if(route.kind==='mobile')page=<FullProject/>;
@@ -25,6 +23,7 @@ export function App({pathname=currentPath()}){
   else if(route.kind==='unfallatlas')page=<UnfallatlasTrial/>;
   else if(route.kind==='legal')page=<LegalPage type={route.legalType}/>;
   else if(route.kind==='energieatlas')page=<EnergieatlasPage/>;
-  else page=<ProjectPage projectId={route.projectId}/>;
-  return <LocaleProvider locale={route?.lang||'de'}><a className="skip-link" href="#main">Zum Inhalt</a><SiteHeader path={path}/><main id="main">{page}</main><Footer/></LocaleProvider>;
+  else if(route.kind==='flow')page=<FlussstroemungPage/>;
+  else {const article=storyArticles[route.projectId];page=<ProjectPage projectId={route.projectId} Article={article.default} contents={article.contents}/>;}
+  return <AppShell pathname={pathname}>{page}</AppShell>;
 }

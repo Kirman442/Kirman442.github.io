@@ -1,5 +1,6 @@
 import {legalDraft} from './legal-details.js';
 export const siteRoutes=[
+  {path:'/projects/flussstroemung',kind:'flow',lang:'de',title:'Flussströmung - Karten & Code',description:'Wie das Wasser auf die Karte kommt: von HydroSHEDS und GloFAS bis zur animierten Flusskarte.'},
   {path:'/projects/energieatlas',kind:'energieatlas',lang:'de',title:'EnergieAtlas - Karten & Code',description:'Sonne, Wind und regionale Unterschiede: von Deutschland bis zum einzelnen Dach.'},
   {path:'/datenschutz',kind:'legal',legalType:'privacy',draft:legalDraft,lang:'de',title:'Datenschutz - Karten & Code',description:'Datenschutzhinweise zu Karten & Code, eingebetteten Anwendungen und Ihren Rechten.'},
   {path:'/impressum',kind:'legal',legalType:'imprint',lang:'de',title:'Impressum - Karten & Code',description:'Anbieterangaben und Kontakt für Karten & Code.'},

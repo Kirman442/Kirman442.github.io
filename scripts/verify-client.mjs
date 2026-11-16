@@ -1,6 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
 import {JSDOM,VirtualConsole} from 'jsdom';import {siteRoutes} from '../src/routes.js';
 import {siteConfig} from '../site.config.mjs';
+import vm from 'node:vm';
 const root=path.resolve(import.meta.dirname,'..'),dist=path.join(root,'dist');
 const checks=[];
 for(const route of siteRoutes){
@@ -9,6 +10,7 @@ for(const route of siteRoutes){
  const console=new VirtualConsole();console.on('error',(...args)=>errors.push(args.join(' ')));console.on('jsdomError',error=>errors.push(error.message));
  const dom=new JSDOM(html,{url:siteConfig.origin+siteConfig.base+route.path.slice(1),runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
  const {window}=dom;window.matchMedia=()=>({matches:false,addEventListener(){},removeEventListener(){}});
+ window.fetch=async url=>{const asset=new URL(url,dom.window.location.href);assert.ok(asset.pathname.startsWith(siteConfig.base));assert.ok(fs.existsSync(path.join(dist,asset.pathname.slice(siteConfig.base.length))));return {};};
  window.HTMLElement.prototype.scrollIntoView=()=>{};
  const matches=window.HTMLElement.prototype.matches;
  window.HTMLElement.prototype.matches=function(selector){return selector===':modal'?this.dataset.modal==='true':matches.call(this,selector);};
@@ -17,20 +19,59 @@ for(const route of siteRoutes){
  const before=window.document.querySelector('h1').textContent;
  const scriptUrl=window.document.querySelector('script[type=module]').getAttribute('src');
  assert.ok(scriptUrl.startsWith(siteConfig.base),'Client script escapes site base');
- const script=fs.readFileSync(path.join(dist,scriptUrl.slice(siteConfig.base.length)),'utf8');
- // Allow cold hydration and its initial hash-restoration effect to finish before clicks.
- window.eval(script);await new Promise(resolve=>setTimeout(resolve,500));
+ // Execute the actual production module graph, including dynamic route imports.
+ const modules=new Map();let linking=Promise.resolve();
+ function moduleFor(url){
+  if(modules.has(url))return modules.get(url);
+  const filename=path.join(dist,new URL(url).pathname.slice(siteConfig.base.length));
+  const module=new vm.SourceTextModule(fs.readFileSync(filename,'utf8'),{
+   context:dom.getInternalVMContext(),identifier:url,
+   initializeImportMeta(meta){meta.url=url;},
+   importModuleDynamically:async(specifier,referencing)=>{
+    const dependency=moduleFor(new URL(specifier,referencing.identifier).href);
+    linking=linking.then(()=>dependency.status==='unlinked'?dependency.link(resolveModule):undefined);
+    await linking;
+    if(dependency.status!=='evaluated')await dependency.evaluate();
+    return dependency;
+   }
+  });modules.set(url,module);return module;
+ }
+ function resolveModule(specifier,referencing){return moduleFor(new URL(specifier,referencing.identifier).href);}
+ const entry=moduleFor(new URL(scriptUrl,dom.window.location.href).href);
+ await entry.link(resolveModule);await entry.evaluate();
+ await new Promise(resolve=>setTimeout(resolve,500));
  assert.equal(window.document.querySelector('h1').textContent,before,route.path+' changed route during hydration');
  assert.deepEqual(errors,[],route.path+' client errors');
  assert.equal(window.document.body.style.overflow,'');
+ if(window.document.querySelector('iframe')){
+  const frame=window.document.querySelector('iframe'),embed=window.document.querySelector('.map-embed');
+  // External URL is present from HTML parsing, without scrolling or an observer.
+  assert.equal(frame.getAttribute('src'),frame.getAttribute('data-app-src'));
+  frame.dispatchEvent(new window.Event('load'));await new Promise(resolve=>setTimeout(resolve,20));assert.equal(embed.dataset.loadState,'document');
+  const data={type:'karten-code:app-status',status:'ready'},origin=new URL(frame.src).origin;
+  window.dispatchEvent(new window.MessageEvent('message',{data,origin:'https://untrusted.example',source:frame.contentWindow}));
+  window.dispatchEvent(new window.MessageEvent('message',{data,origin,source:window}));
+  await new Promise(resolve=>setTimeout(resolve,20));assert.equal(embed.dataset.loadState,'document');
+  window.dispatchEvent(new window.MessageEvent('message',{data,origin,source:frame.contentWindow}));
+  await new Promise(resolve=>setTimeout(resolve,20));assert.equal(embed.dataset.loadState,'ready');
+  frame.dispatchEvent(new window.Event('load'));await new Promise(resolve=>setTimeout(resolve,20));assert.equal(embed.dataset.loadState,'ready');
+  if(route.path==='/projects/ladeinfrastruktur'){
+   window.dispatchEvent(new window.MessageEvent('message',{data:{...data,status:'error'},origin,source:frame.contentWindow}));
+   await new Promise(resolve=>setTimeout(resolve,20));assert.equal(embed.dataset.loadState,'error');
+   window.document.querySelector('.embed-reload').click();await new Promise(resolve=>setTimeout(resolve,20));
+   assert.notEqual(window.document.querySelector('iframe'),frame);
+   window.dispatchEvent(new window.MessageEvent('message',{data,origin,source:frame.contentWindow}));
+   await new Promise(resolve=>setTimeout(resolve,20));assert.notEqual(embed.dataset.loadState,'ready');
+  }
+ }
  if(route.path==='/'){
-  assert.equal(window.document.querySelectorAll('.home-project-card').length,10);
-  assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'energieatlas');
+  assert.equal(window.document.querySelectorAll('.home-project-card').length,11);
+  assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'flussstroemung');
   assert.equal(window.document.querySelector('.home-featured .featured-map').getAttribute('href'),'/kc/projects/ladeinfrastruktur');
   const button=[...window.document.querySelectorAll('.project-filters button')].find(item=>item.textContent==='3D & Geodaten');button.click();await new Promise(resolve=>setTimeout(resolve,20));
   assert.equal(window.document.querySelector('.project-count').textContent,'1 Projekt');
   const trigger=window.document.querySelector('.projects-trigger');trigger.click();await new Promise(resolve=>setTimeout(resolve,20));
-  assert.equal(window.document.querySelector('.projects-panel').hidden,false);assert.equal(window.document.querySelectorAll('.projects-panel li').length,11);
+  assert.equal(window.document.querySelector('.projects-panel').hidden,false);assert.equal(window.document.querySelectorAll('.projects-panel li').length,12);
  }
  if(route.path==='/projects/ladeinfrastruktur'){
   const frame=window.document.querySelector('iframe');window.document.querySelector('.embed-actions button').click();await new Promise(resolve=>setTimeout(resolve,20));
@@ -48,6 +89,22 @@ for(const route of siteRoutes){
   if(route.lang==='de')assert.ok(sources.children[1].textContent.includes('Richard Sorge'));
   assert.deepEqual(disclosures.map(node=>node.querySelector('summary').textContent),route.lang==='en'?['Data and methodology','Packages and libraries','Documentation and background reading']:['Daten und Methodik','Pakete und Bibliotheken','Dokumentation und weiterführende Materialien']);
   for(const disclosure of disclosures){assert.ok(disclosure.querySelector('a'),'Empty sources group');disclosure.querySelector('summary').click();assert.equal(disclosure.open,true);disclosure.querySelector('summary').click();assert.equal(disclosure.open,false);}
+ }
+ if(route.path==='/projects/flussstroemung'){
+  const doc=window.document;
+  const click=text=>[...doc.querySelectorAll('button')].find(button=>button.textContent===text).click();
+  click('Unterer Ganges');await new Promise(resolve=>setTimeout(resolve,20));
+  assert.equal(doc.getElementById('flow-q').value,Math.log10(40393).toString());
+  assert.equal(doc.getElementById('flow-s').value,Math.log10(.05).toString());
+  const firstVelocity=doc.getElementById('flow-velocity').textContent;
+  click('Gebirgsbach');await new Promise(resolve=>setTimeout(resolve,20));assert.notEqual(doc.getElementById('flow-velocity').textContent,firstVelocity);
+  click('Ob');await new Promise(resolve=>setTimeout(resolve,20));assert.equal(doc.querySelector('[data-flow-river]').dataset.flowRiver,'ob');
+  assert.equal(doc.querySelectorAll('.flow-year').length,4);
+  doc.querySelector('.flow-year-toggle input').click();await new Promise(resolve=>setTimeout(resolve,20));assert.equal(doc.querySelectorAll('.flow-year').length,0);
+  click('Langes Messfenster');await new Promise(resolve=>setTimeout(resolve,20));assert.equal(doc.querySelectorAll('.flow-steep').length,0);
+  assert.equal(doc.querySelectorAll('.flow-story-section').length,6);
+  assert.equal(doc.querySelector('meta[name=robots]'),null);
+  assert.ok(fs.readFileSync(path.join(dist,'sitemap.xml'),'utf8').includes('/projects/flussstroemung'));
  }
  if(route.path==='/projects/energieatlas'){
   const link=window.document.querySelector('.energy-article>.appendix-reference a');

@@ -96,7 +96,7 @@ export default function UbahnArticle() {return <div className="mobile-network-ar
                                 <b>Jede Kachel hat x-, y- und z-Koordinaten:</b>
                             </p>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/ubahn/2200_1343.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/ubahn/2200_1343.webp")} alt="Kachel Foto" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/ubahn/2200_1343.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/ubahn/2200_1343.webp")} alt="Kachel Foto" loading="lazy" width="256" height="256" /></a></figure>
       </div><div className="illustrated-copy">
         <p>z ist der Maßstab, in
                                         dem sie angezeigt wird (je größer der z-Wert, desto größer die Vergrößerung);
@@ -109,7 +109,7 @@ export default function UbahnArticle() {return <div className="mobile-network-ar
                                     </p>
       </div></div>
     <div className="illustrated-note"><div className="illustrated-media">
-        <figure className="article-figure"><a href={siteUrl("/images/ubahn/tile_map_story.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/ubahn/tile_map_story.webp")} alt="Kachel Gesamtbild" loading="lazy" /></a></figure>
+        <figure className="article-figure"><a href={siteUrl("/images/ubahn/tile_map_story.webp")} target="_blank" rel="noopener noreferrer"><img src={siteUrl("/images/ubahn/tile_map_story.webp")} alt="Kachel Gesamtbild" loading="lazy" width="911" height="581" /></a></figure>
       </div><div className="illustrated-copy">
         <p>Das Gesamtbild, das
                                         wir letztendlich sehen, wird aus vielen Kacheln zu einem einzigen Bild zusammengefügt:
