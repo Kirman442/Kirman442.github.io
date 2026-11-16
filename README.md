@@ -55,7 +55,7 @@ Der Build erzeugt HTML, Metadaten, Sitemap und Weiterleitungen innerhalb von `/k
 
    Alternativ: `python scripts/prepare-project-images.py`. Falls Pillow fehlt: `python -m pip install Pillow` in der verwendeten Python-Umgebung.
 
-Der Generator liest den gesamten Projektkatalog, berücksichtigt EXIF-Ausrichtung und erzeugt WebP-Vorschauen mit 160, 256, 384, 640, 960 und 1280 Pixel Breite (Qualität 84, keine Vergrößerung, Seitenverhältnis bleibt erhalten). PNG-Quellen erhalten zusätzlich eine WebP-Fassung mit Qualität 86. Danach im Katalog den WebP-Pfad verwenden. `src/ProjectImage.jsx` wählt mit `srcset` und `sizes` die passende Datei für Kartengröße und Pixeldichte.
+Der Generator liest den gesamten Projektkatalog, berücksichtigt EXIF-Ausrichtung und erzeugt WebP-Vorschauen mit 160, 192, 256, 320, 384, 480, 640, 960 und 1280 Pixel Breite (Qualität 76, bei Bedarf mit `--preview-quality` anpassbar, keine Vergrößerung, Seitenverhältnis bleibt erhalten). PNG-Quellen erhalten zusätzlich eine WebP-Fassung mit Qualität 86. Danach im Katalog den WebP-Pfad verwenden. `src/ProjectImage.jsx` wählt mit `srcset` und `sizes` die passende Datei für Kartengröße und Pixeldichte.
 
 `public/assets/previews/` und `src/project-images.json` werden mit eingecheckt. Der Build braucht dadurch kein Python. `npm run check` meldet Projekte ohne vorbereitete oder mit fehlenden Vorschauen. Nach Änderungen: `npm run check`, `npm run build`, `npm test` und Desktop/Mobilansicht prüfen. Titelbilder werden nicht auf Polaroid-Größe verkleinert; nur die Vorschauen.
 

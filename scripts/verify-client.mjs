@@ -9,7 +9,10 @@ for(const route of siteRoutes){
  const html=fs.readFileSync(filename,'utf8'),errors=[];
  const console=new VirtualConsole();console.on('error',(...args)=>errors.push(args.join(' ')));console.on('jsdomError',error=>errors.push(error.message));
  const dom=new JSDOM(html,{url:siteConfig.origin+siteConfig.base+route.path.slice(1),runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:console});
- const {window}=dom;window.matchMedia=()=>({matches:false,addEventListener(){},removeEventListener(){}});
+ const {window}=dom;
+ let scrollPosition=0,scrollReads=0;
+ Object.defineProperty(window,'scrollY',{configurable:true,get(){scrollReads++;return scrollPosition;}});
+ window.matchMedia=()=>({matches:false,addEventListener(){},removeEventListener(){}});
  window.fetch=async url=>{const asset=new URL(url,dom.window.location.href);assert.ok(asset.pathname.startsWith(siteConfig.base));assert.ok(fs.existsSync(path.join(dist,asset.pathname.slice(siteConfig.base.length))));return {};};
  window.HTMLElement.prototype.scrollIntoView=()=>{};
  const matches=window.HTMLElement.prototype.matches;
@@ -65,6 +68,16 @@ for(const route of siteRoutes){
   }
  }
  if(route.path==='/'){
+  assert.equal(scrollReads,0,'Header must not force an initial layout by reading scrollY during hydration');
+  const header=window.document.querySelector('.site-header');
+  const scroll=async y=>{scrollPosition=y;window.dispatchEvent(new window.Event('scroll'));await new Promise(resolve=>setTimeout(resolve,20));};
+  await scroll(0);await scroll(120);
+  assert.ok(header.classList.contains('site-header-hidden'),'Header should hide on downward scroll');
+  await scroll(80);await new Promise(resolve=>setTimeout(resolve,320));
+  assert.ok(!header.classList.contains('site-header-hidden'),'Header should reveal after upward scroll');
+  await scroll(140);await scroll(100);await scroll(180);await new Promise(resolve=>setTimeout(resolve,320));
+  assert.ok(header.classList.contains('site-header-hidden'),'Downward scroll should cancel pending reveal');
+  await scroll(0);assert.ok(!header.classList.contains('site-header-hidden'),'Header should remain visible at the top');
   assert.equal(window.document.querySelectorAll('.home-project-card').length,11);
   assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'flussstroemung');
   assert.equal(window.document.querySelector('.home-featured .featured-map').getAttribute('href'),'/kc/projects/ladeinfrastruktur');

@@ -8,12 +8,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/flussstroemung-cover-vignette-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/flussstroemung-cover-vignette-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/flussstroemung-cover-vignette-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/flussstroemung-cover-vignette-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/flussstroemung-cover-vignette-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/flussstroemung-cover-vignette-640.webp",
@@ -38,12 +50,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/energieatlas-aerial-coast-v1-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/energieatlas-aerial-coast-v1-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/energieatlas-aerial-coast-v1-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/energieatlas-aerial-coast-v1-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/energieatlas-aerial-coast-v1-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/energieatlas-aerial-coast-v1-640.webp",
@@ -68,12 +92,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/mobile-network-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/mobile-network-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/mobile-network-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/mobile-network-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/mobile-network-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/mobile-network-640.webp",
@@ -98,8 +134,16 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/accidents-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/accidents-256.webp",
         "width": 256
+      },
+      {
+        "src": "/assets/previews/accidents-320.webp",
+        "width": 320
       },
       {
         "src": "/assets/previews/accidents-384.webp",
@@ -120,12 +164,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/hero-real-world-to-data-v1-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/hero-real-world-to-data-v1-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/hero-real-world-to-data-v1-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/hero-real-world-to-data-v1-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/hero-real-world-to-data-v1-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/hero-real-world-to-data-v1-640.webp",
@@ -150,12 +206,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/ladeinfrastruktur-hero-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/ladeinfrastruktur-hero-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/ladeinfrastruktur-hero-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/ladeinfrastruktur-hero-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/ladeinfrastruktur-hero-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/ladeinfrastruktur-hero-640.webp",
@@ -180,12 +248,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/bayern-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/bayern-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/bayern-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/bayern-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/bayern-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/bayern-640.webp",
@@ -206,12 +286,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/art-maps-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/art-maps-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/art-maps-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/art-maps-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/art-maps-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/art-maps-640.webp",
@@ -232,12 +324,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/rivers-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/rivers-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/rivers-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/rivers-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/rivers-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/rivers-640.webp",
@@ -258,12 +362,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/metro-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/metro-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/metro-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/metro-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/metro-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/metro-640.webp",
@@ -284,12 +400,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/mining-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/mining-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/mining-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/mining-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/mining-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/mining-640.webp",
@@ -310,12 +438,24 @@
         "width": 160
       },
       {
+        "src": "/assets/previews/clusters-192.webp",
+        "width": 192
+      },
+      {
         "src": "/assets/previews/clusters-256.webp",
         "width": 256
       },
       {
+        "src": "/assets/previews/clusters-320.webp",
+        "width": 320
+      },
+      {
         "src": "/assets/previews/clusters-384.webp",
         "width": 384
+      },
+      {
+        "src": "/assets/previews/clusters-480.webp",
+        "width": 480
       },
       {
         "src": "/assets/previews/clusters-640.webp",

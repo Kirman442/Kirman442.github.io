@@ -13,13 +13,16 @@ export function SiteHeader({path=currentPath()}={}) {
   const cancelReveal = () => {window.clearTimeout(revealTimer.current);revealTimer.current = null;};
 
   useEffect(() => {
-    let lastY = Math.max(0, window.scrollY);
+    // Read scroll geometry only in response to scrolling, after initial layout.
+    // Reading scrollY during hydration can synchronously flush the whole page.
+    let lastY = null;
     let direction = null;
     const onScroll = () => {
       const y = Math.max(0, window.scrollY);
       if (y <= 50) {
         lastY = y;direction = null;cancelReveal();setHidden(false);return;
       }
+      if (lastY === null) {lastY = y;return;}
       const delta = y - lastY;
       if (Math.abs(delta) < 4) return;
       lastY = y;

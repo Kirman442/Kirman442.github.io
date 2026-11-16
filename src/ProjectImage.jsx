@@ -10,7 +10,10 @@ function imageSizes(kind, ratio) {
   if (kind === 'hero-1') return `(max-width: 700px) max(280px, ${needed(270)}px), max(360px, ${needed(320)}px)`;
   if (kind === 'hero-2') return `max(230px, ${needed(150)}px)`;
   if (kind === 'hero-3') return `max(320px, ${needed(140)}px)`;
-  return `(max-width: 700px) max(100px, ${needed(140)}px), (max-width: 800px) max(330px, ${needed(190)}px), max(165px, ${needed(150)}px)`;
+  // The 165px grid column includes margins, border and print padding:
+  // the image itself is 137px wide (93px on mobile, 74px below 360px).
+  // Preserve enough source pixels for object-fit:cover on landscape artwork.
+  return `(max-width: 360px) max(74px, ${needed(138)}px), (max-width: 700px) max(93px, ${needed(140)}px), (max-width: 800px) max(137px, ${needed(190)}px), (max-width: 1050px) max(137px, ${needed(148)}px), max(137px, ${needed(150)}px)`;
 }
 
 export default function ProjectImage({src, kind='card', ...props}) {
