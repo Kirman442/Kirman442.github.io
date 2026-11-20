@@ -113,6 +113,9 @@ Die Linienstärke hängt vom Abfluss ab (Q^0,22), sodass man ein Hochwasser mit 
 
 Das Panel enthält den Steckbrief des Flusses mit Diagrammen zu Niederschlag, Temperatur und Längsprofil, den Vergleich zweier Flüsse, die Zeitleiste mit dem Abflussverlauf nach Monaten und GloFAS-Jahren und die Beschreibung der Berechnungen. Der Zustand steht in der URL, deshalb lässt sich jede Ansicht als Link verschicken.
 
+Jeder Fluss lässt sich direkt aus der Anwendung als A3-Kartenblatt speichern, als PDF oder PNG, bis 300 dpi. Die Karte entsteht mit demselben Code wie auf dem Bildschirm, ergänzt um Nordpfeil, Maßstab, Übersichtskarte, Legende und Flussnamen entlang des Laufs, auf Wunsch mit zwölf Monatskarten.
+
+Der Code liegt mit Anleitung auf GitHub. Um die Website lokal zu starten, braucht man nichts weiter: Die fertigen Daten und Bibliotheken liegen im Repository. Wer die Daten selbst neu aufbereiten möchte, braucht vier Datensätze, HydroRIVERS, RiverATLAS, GloRiC und Natural Earth, sowie optional einen kostenlosen Copernicus-Schlüssel für GloFAS. Die Links stehen unten.
 
 ---
 

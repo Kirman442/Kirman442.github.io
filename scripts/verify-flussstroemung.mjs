@@ -22,5 +22,4 @@ assert.equal(d.querySelector('.flow-cover img').getAttribute('width'),'2400');
 for(const r of Object.values(seasonalRivers)){assert.equal(r.q.length,12);assert.equal(r.pre.length,12);assert.ok(r.yrs.every(year=>year.length===12));}
 console.log(`Flussströmung: ${fragments} prose fragments preserved, 6 sections, 5 dataset rows, 3 collapsed reference groups with complete source text, monthly series, cover and published route verified.`);
 
-assert.ok(!actual.includes('Der Code liegt mit Anleitung auf GitHub.'));
 assert.ok(d.querySelector('#project-navigation a[rel=next]'));
