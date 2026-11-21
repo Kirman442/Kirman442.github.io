@@ -1,5 +1,6 @@
 import {legalDraft} from './legal-details.js';
 export const siteRoutes=[
+  {path:'/projects/ubahn-3d',kind:'ubahn3d',lang:'de',title:'U-Bahn in der Tiefe - Karten & Code',description:'Ein räumliches Modell der U-Bahn in Berlin, Hamburg, München und Nürnberg: Gelände, Tiefen und Netzgeschichte.'},
   {path:'/projects/flussstroemung',kind:'flow',lang:'de',title:'Flussströmung - Karten & Code',description:'Wie das Wasser auf die Karte kommt: von HydroSHEDS und GloFAS bis zur animierten Flusskarte.'},
   {path:'/projects/energieatlas',kind:'energieatlas',lang:'de',title:'EnergieAtlas - Karten & Code',description:'Sonne, Wind und regionale Unterschiede: von Deutschland bis zum einzelnen Dach.'},
   {path:'/datenschutz',kind:'legal',legalType:'privacy',draft:legalDraft,lang:'de',title:'Datenschutz - Karten & Code',description:'Datenschutzhinweise zu Karten & Code, eingebetteten Anwendungen und Ihren Rechten.'},

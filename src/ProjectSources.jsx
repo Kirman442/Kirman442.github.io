@@ -44,7 +44,7 @@ export function SourceBlocks({blocks,Inline,credits=false}){
     if(block.type==='heading'){const Heading=block.level===4?'h4':'h3';return <Heading key={i}>{block.text}</Heading>;}
     if(block.type==='list'&&credits)return <ul className="project-source-credits" key={i}>{block.items.map((item,j)=><li key={j}><Inline text={item}/></li>)}</ul>;
     const rows=block.type==='table'?block.rows.map(row=>[linkedTitle(row[0],row[2]),row[1]]):block.type==='list'?block.items.map(item=>{const match=item.match(/^(.+?\*\*)\s+[–-]\s+(.+)$/);return match?[match[1],match[2]]:[item,''];}):null;
-    if(rows)return <dl className="mobile-network-resources" key={i}>{rows.map(([name,description],j)=><div className="mobile-network-resource" key={j}><dt><Inline text={name}/></dt><dd><Inline text={description}/></dd></div>)}</dl>;
+    if(rows)return <dl className="mobile-network-resources" data-source-renderer="shared" key={i}>{rows.map(([name,description],j)=><div className="mobile-network-resource" key={j}><dt><Inline text={name}/></dt><dd><p><Inline text={description}/></p></dd></div>)}</dl>;
     return null;
   });
 }

@@ -1,4 +1,5 @@
 const catalogue = [
+  { id:'ubahn3d', title:'U-Bahn in der Tiefe', category:'3D & Geodaten', year:'2026', image:'/assets/ubahn-3d-cover-ohne-staedte.webp', href:'/projects/ubahn-3d', description:'Vier U-Bahn-Netze räumlich erkunden: Tiefen, Gelände und Geschichte in Berlin, Hamburg, München und Nürnberg.', tools:'React / three.js / DGM / Python' },
   { id:'flussstroemung', title:'Flussströmung', category:'Web-GIS', year:'2026', image:'/assets/flussstroemung-cover-vignette.webp', href:'/projects/flussstroemung', description:'Globale Flussnetze in Bewegung: von HydroSHEDS und saisonalen Abflussdaten bis zur animierten Karte.', tools:'Python / GeoParquet / MapLibre / deck.gl / GLSL' },
   { id:'energieatlas', title:'EnergieAtlas', category:'Web-GIS', year:'2026', image:'/assets/energieatlas-aerial-coast-v1.webp', href:'/projects/energieatlas', description:'Solar- und Windenergie in Deutschland: Anlagenbestand, regionale Vergleiche und modelliertes Dachpotenzial auf unterschiedlichen Maßstabsebenen untersuchen.', tools:'Python / React / TypeScript / MapLibre / ECharts' },
   { id:'mobile', title:'MobileNetwork', category:'Web-GIS', year:'2025 / 2026', image:'/assets/mobile-network.webp', href:'/projects/mobile-network', description:'Über eine Million Tile-Datensätze im Browser. Eine Geschichte über Formate, Verarbeitung und interaktive Karten.', tools:'React / deck.gl / Arrow', featuredHeading:['Große Daten.','Neue Wege zur Karte.'],featuredCaption:'Web-GIS / 42 Länder' },
@@ -15,6 +16,7 @@ const catalogue = [
 
 // Publication dates control the homepage chronology; article-navigation order stays explicit.
 const presentation={
+ ubahn3d:{publishedAt:'2026-11-21',polaroidTilt:0,printCaption:'U-Bahn in der Tiefe',imagePosition:'68% 50%'},
  flussstroemung:{publishedAt:'2026-11-16',polaroidTilt:0,printCaption:'Flussströmung',imagePosition:'50% 64%'},
  energieatlas:{publishedAt:'2026-11-01',polaroidTilt:0,printCaption:'EnergieAtlas',heroLabel:'Energie',heroCaption:'Sonne, Wind und Regionen',imagePosition:'60% top'},
  mobile:{publishedAt:'2025-04-27',polaroidTilt:3,printCaption:'MobileNetwork'},

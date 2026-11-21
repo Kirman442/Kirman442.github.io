@@ -9,7 +9,7 @@ export const legalDetails = {
 };
 export const legalOpenItems = [
   'Hosting: konkrete Vertrags- und Empfängerrollen für das verwendete GitHub-Konto abschließend klären; eine Auftragsverarbeitungsvereinbarung wird nicht ohne Nachweis vorausgesetzt.',
-  'Datenschutzhinweise der übrigen eingebetteten Anwendungen ergänzen; Ladeinfrastruktur ist laut Betreiber vorbereitet, aber noch nicht veröffentlicht.',
+  'Datenschutzhinweise der übrigen eingebetteten Anwendungen ergänzen und mit den veröffentlichten Fassungen abgleichen.',
   'Einbindung aller Anwendungen einschließlich Kartendiensten und Browserspeicher prüfen; Ladeverfahren und Datenschutztext aufeinander abstimmen.',
 ];
 export const legalDraft = legalOpenItems.length > 0;

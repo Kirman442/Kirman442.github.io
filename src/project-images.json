@@ -1,4 +1,46 @@
 {
+  "/assets/ubahn-3d-cover-ohne-staedte.webp": {
+    "width": 2400,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-160.webp",
+        "width": 160
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-192.webp",
+        "width": 192
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-256.webp",
+        "width": 256
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-384.webp",
+        "width": 384
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/assets/previews/ubahn-3d-cover-ohne-staedte-1280.webp",
+        "width": 1280
+      }
+    ]
+  },
   "/assets/flussstroemung-cover-vignette.webp": {
     "width": 2400,
     "height": 1200,

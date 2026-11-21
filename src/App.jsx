@@ -1,4 +1,5 @@
 import React from 'react';
+import Ubahn3dPage from './Ubahn3dPage.jsx';
 import AppShell,{resolveRoute} from './AppShell.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 import {storyArticles} from './story-articles.jsx';
@@ -16,6 +17,7 @@ export function App({pathname=currentPath()}){
   const {route}=resolveRoute(pathname);
   let page;
   if(!route)page=<NotFoundPage/>;
+  else if(route.kind==='ubahn3d')page=<Ubahn3dPage/>;
   else if(route.kind==='home')page=<HomePage/>;
   else if(route.kind==='about')page=<AboutPage/>;
   else if(route.kind==='mobile')page=<FullProject/>;

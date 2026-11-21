@@ -45,6 +45,12 @@ for(const route of siteRoutes){
  await new Promise(resolve=>setTimeout(resolve,500));
  assert.equal(window.document.querySelector('h1').textContent,before,route.path+' changed route during hydration');
  assert.deepEqual(errors,[],route.path+' client errors');
+ // Shared source descriptions use the same paragraph structure as the article renderers.
+ for(const description of window.document.querySelectorAll('.project-sources dl[data-source-renderer="shared"] .mobile-network-resource dd')){
+  assert.ok(description.querySelector(':scope > p'),route.path+' source description needs a paragraph');
+  assert.ok([...description.childNodes].every(node=>node.nodeType!==3||!node.textContent.trim()),route.path+' source description has unwrapped text');
+ }
+
  assert.equal(window.document.body.style.overflow,'');
  if(window.document.querySelector('iframe')){
   const frame=window.document.querySelector('iframe'),embed=window.document.querySelector('.map-embed');
@@ -78,13 +84,13 @@ for(const route of siteRoutes){
   await scroll(140);await scroll(100);await scroll(180);await new Promise(resolve=>setTimeout(resolve,320));
   assert.ok(header.classList.contains('site-header-hidden'),'Downward scroll should cancel pending reveal');
   await scroll(0);assert.ok(!header.classList.contains('site-header-hidden'),'Header should remain visible at the top');
-  assert.equal(window.document.querySelectorAll('.home-project-card').length,11);
-  assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'flussstroemung');
+  assert.equal(window.document.querySelectorAll('.home-project-card').length,12);
+  assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'ubahn3d');
   assert.equal(window.document.querySelector('.home-featured .featured-map').getAttribute('href'),'/kc/projects/ladeinfrastruktur');
   const button=[...window.document.querySelectorAll('.project-filters button')].find(item=>item.textContent==='3D & Geodaten');button.click();await new Promise(resolve=>setTimeout(resolve,20));
-  assert.equal(window.document.querySelector('.project-count').textContent,'1 Projekt');
+  assert.equal(window.document.querySelector('.project-count').textContent,'2 Projekte');
   const trigger=window.document.querySelector('.projects-trigger');trigger.click();await new Promise(resolve=>setTimeout(resolve,20));
-  assert.equal(window.document.querySelector('.projects-panel').hidden,false);assert.equal(window.document.querySelectorAll('.projects-panel li').length,12);
+  assert.equal(window.document.querySelector('.projects-panel').hidden,false);assert.equal(window.document.querySelectorAll('.projects-panel li').length,13);
  }
  if(route.path==='/projects/ladeinfrastruktur'){
   const frame=window.document.querySelector('iframe');window.document.querySelector('.embed-actions button').click();await new Promise(resolve=>setTimeout(resolve,20));

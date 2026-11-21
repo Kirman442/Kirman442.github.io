@@ -1,6 +1,7 @@
-const pageModules={home:'HomePage',about:'AboutPage',mobile:'FullProject',charging:'LadeinfrastrukturPage',unfallatlas:'UnfallatlasTrial',legal:'LegalPage',energieatlas:'EnergieatlasPage',flow:'FlussstroemungPage',story:'ProjectPage'};
+const pageModules={ubahn3d:'Ubahn3dPage',home:'HomePage',about:'AboutPage',mobile:'FullProject',charging:'LadeinfrastrukturPage',unfallatlas:'UnfallatlasTrial',legal:'LegalPage',energieatlas:'EnergieatlasPage',flow:'FlussstroemungPage',story:'ProjectPage'};
 const articleModules={accidents:'AccidentsArticle',bayern:'BayernArticle',art:'KunstkartenArticle',rivers:'FlusssystemArticle',metro:'UbahnArticle',mining:'BergbauArticle',clusters:'ClusteringArticle'};
 const loaders={
+  Ubahn3dPage:()=>import('./Ubahn3dPage.jsx'),
   HomePage:()=>import('./HomePage.jsx'),AboutPage:()=>import('./AboutPage.jsx'),
   FullProject:()=>import('./FullProject.jsx'),ProjectPage:()=>import('./ProjectPage.jsx'),
   LadeinfrastrukturPage:()=>import('./LadeinfrastrukturPage.jsx'),UnfallatlasTrial:()=>import('./UnfallatlasTrial.jsx'),

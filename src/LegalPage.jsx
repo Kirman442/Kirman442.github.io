@@ -4,6 +4,7 @@ import {legalDetails} from './legal-details.js';
 import './legal.css';
 
 const apps = [
+  ['U-Bahn in der Tiefe','https://kirman442.github.io/ubahn-3d/'],
   ['Flussströmung','https://kirman442.github.io/hydrorivers_v2/'],
   ['EnergieAtlas','https://kirman442.github.io/energie-atlas/'],
   ['MobileNetwork','https://mobile-network-map.netlify.app/'],
@@ -43,6 +44,7 @@ function Privacy(){
       <p>„Separat öffnen“ öffnet die jeweilige Anwendung als eigene Seite. Dort angebotene Datenschutzhinweise ergänzen die Angaben zur Einbindung in dieses Portfolio.</p>
       <ul className="legal-apps">{apps.map(([name,url])=><li key={url}><a href={url}>{name} ↗</a><span>{new URL(url).hostname}</span></li>)}</ul>
       <p><a href="https://unfallatlas.netlify.app/accidents/app.html?screen=about#about-privacy">Unfallatlas Deutschland - Datenschutzhinweise der Anwendung</a></p>
+      <p>Die Datenschutzhinweise zu U-Bahn in der Tiefe sind über die Schaltfläche „Datenschutz“ in der <a href="https://kirman442.github.io/ubahn-3d/">Anwendung</a> erreichbar.</p>
       <p>Anwendungen auf kirman442.github.io teilen sich mit dem Portfolio denselben Browser-Ursprung. Eine Trennung der URL-Pfade allein trennt deshalb beispielsweise den localStorage nicht.</p>
     </section>
     <section id="rechte"><h2>5. Ihre Rechte</h2>
@@ -64,6 +66,6 @@ function Imprint(){
 }
 export default function LegalPage({type}){
   const privacy=type==='privacy';
-  return <article className="container legal-page" lang="de"><header><p className="eyebrow">Karten &amp; Code / Rechtliche Hinweise</p><h1>{privacy?'Datenschutzerklärung':'Impressum'}</h1><p className="legal-date mono">Stand: {privacy?'1. November 2026':'20. Oktober 2026'}</p></header>
+  return <article className="container legal-page" lang="de"><header><p className="eyebrow">Karten &amp; Code / Rechtliche Hinweise</p><h1>{privacy?'Datenschutzerklärung':'Impressum'}</h1><p className="legal-date mono">Stand: {privacy?'21. November 2026':'20. Oktober 2026'}</p></header>
     <div className="legal-copy">{privacy?<Privacy/>:<Imprint/>}</div><nav className="legal-related" aria-label="Weitere rechtliche Hinweise"><a href={siteUrl('/')}>← Zur Projektübersicht</a><a href={siteUrl(privacy?'/impressum/':'/datenschutz/')}>{privacy?'Impressum':'Datenschutz'} ↗</a></nav></article>;
 }
