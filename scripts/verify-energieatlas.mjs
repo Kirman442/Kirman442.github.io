@@ -40,7 +40,7 @@ assert.ok(actual.includes('Anlagenstatus und die gemeldete Leistung im jeweils a
 assert.ok(!actual.includes('\u2014'),'Long dashes must be replaced throughout the EnergieAtlas story');
 assert.ok(!document.title.includes('\u2014'),'Long dash must be replaced in the EnergieAtlas title');
 assert.ok(actual.includes('Hanau/Main-Kinzig-Kreis'));
-assert.equal(document.querySelector('.sources-container').children[1].querySelector('h3')?.textContent,'Projektbeteiligte');
+assert.equal(document.querySelector('.project-source-contributors h3')?.textContent,'Projektbeteiligte');
 assert.ok(!actual.includes('Решения и приёмка результатов оставались за автором проекта.'));
 assert.ok(actual.includes('nachfolgend aufgeführten Datensätze, methodischen Unterlagen und Werkzeuge.'));
 assert.equal(document.querySelector('iframe').getAttribute('data-app-src'),'https://kirman442.github.io/energie-atlas/');

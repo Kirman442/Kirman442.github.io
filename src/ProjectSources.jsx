@@ -5,7 +5,7 @@ import './project-sources.css';
 export default function ProjectSources({locale='de',credits,data,libraries,documentation}){
   const en=locale==='en';
   return <div className="project-sources" lang={locale}><h2 id="sources">{en?'Sources and documentation':'Quellen und Dokumentation'}</h2>
-    <section className="project-source-contributors"><h3>{en?'Project contributors':'Projektbeteiligte'}</h3>{credits}</section>
+    {credits!=null&&<section className="project-source-contributors"><h3>{en?'Project contributors':'Projektbeteiligte'}</h3>{credits}</section>}
     <DocumentationDetails title={en?'Data and methodology':'Daten und Methodik'}>{data}</DocumentationDetails>
     <DocumentationDetails title={en?'Packages and libraries':'Pakete und Bibliotheken'}>{libraries}</DocumentationDetails>
     <DocumentationDetails title={en?'Documentation and background reading':'Dokumentation und weiterführende Materialien'}>{documentation}</DocumentationDetails>
@@ -38,13 +38,18 @@ function linkedTitle(name,references=''){
   return `[${name}](${links[0][2]})`+(links.length>1?' · '+links.slice(1).map(link=>link[0]).join(' · '):'');
 }
 
-export function SourceBlocks({blocks,Inline,credits=false}){
+export function SourceBlocks({blocks,Inline,credits=false,listsAsResources=true}){
   return blocks.map((block,i)=>{
     if(block.type==='paragraph')return <p key={i}><Inline text={block.text}/></p>;
     if(block.type==='heading'){const Heading=block.level===4?'h4':'h3';return <Heading key={i}>{block.text}</Heading>;}
-    if(block.type==='list'&&credits)return <ul className="project-source-credits" key={i}>{block.items.map((item,j)=><li key={j}><Inline text={item}/></li>)}</ul>;
+    if(block.type==='list'&&(credits||!listsAsResources))return <ul className={credits?'project-source-credits':'project-source-list'} key={i}>{block.items.map((item,j)=><li key={j}><Inline text={item}/></li>)}</ul>;
     const rows=block.type==='table'?block.rows.map(row=>[linkedTitle(row[0],row[2]),row[1]]):block.type==='list'?block.items.map(item=>{const match=item.match(/^(.+?\*\*)\s+[–-]\s+(.+)$/);return match?[match[1],match[2]]:[item,''];}):null;
-    if(rows)return <dl className="mobile-network-resources" data-source-renderer="shared" key={i}>{rows.map(([name,description],j)=><div className="mobile-network-resource" key={j}><dt><Inline text={name}/></dt><dd><p><Inline text={description}/></p></dd></div>)}</dl>;
+    if(rows)return <SourceResources key={i} rows={rows.map(([name,description])=>({name:<Inline text={name}/>,paragraphs:[<Inline text={description}/>]}))}/>;
     return null;
   });
+}
+
+// Shared HTML for Markdown sources and sources already represented as React nodes.
+export function SourceResources({rows,className=''}){
+  return <dl className={`mobile-network-resources ${className}`.trim()} data-source-renderer="shared">{rows.map(({name,paragraphs},i)=><div className="mobile-network-resource" key={i}><dt>{name}</dt><dd>{paragraphs.map((paragraph,j)=><p key={j}>{paragraph}</p>)}</dd></div>)}</dl>;
 }

@@ -6,7 +6,7 @@ import {siteUrl} from './site-paths.js';
 import {Arrow} from './components.jsx';
 import MapEmbed from './MapEmbed.jsx';
 import ProjectNavigation from './ProjectNavigation.jsx';
-import DocumentationDetails from './DocumentationDetails.jsx';
+import ProjectSources,{SourceBlocks} from './ProjectSources.jsx';
 import {ManningCalculator,SectionBars,SlopeChart,SeasonChart,TemperatureChart,DeliveryFacts} from './FlussstroemungCharts.jsx';
 import './full-article.css';
 import './flussstroemung.css';
@@ -45,7 +45,7 @@ function Formula({text}){
  const monthly=text.startsWith('**v_Monat');
  return <p className="flow-formula"><strong>{monthly?<>v<sub>Monat</sub> = v · (Q<sub>Monat</sub> / Q)<sup>0,2</sup></>:<>v = n<sup>-0,6</sup> · (Q / w)<sup>0,4</sup> · S<sup>0,3</sup></>}</strong><Inline text={text.slice(text.indexOf('**',2)+2)}/></p>;
 }
-function Blocks({items,resources=false}){return items.map((block,i)=>{
+function Blocks({items}){return items.map((block,i)=>{
  if(block.type==='paragraph'){
   if(block.text.startsWith('*Am Beispiel des Ganges.')&&items[i-1]?.text==='{{section-bars}}')return null;
   if(block.text.startsWith('*Schema, nicht maßstäblich:')&&items[i+1]?.text==='{{slope-chart}}')return null;
@@ -55,7 +55,7 @@ function Blocks({items,resources=false}){return items.map((block,i)=>{
  }
  if(block.type==='heading')return <h3 key={i}>{block.text}</h3>;
  if(block.type==='list')return <ul key={i}>{block.items.map((item,j)=><li key={j}><Inline text={item}/></li>)}</ul>;
- if(block.type==='table')return resources?<dl className="mobile-network-resources trial-resources" key={i}>{block.rows.map((row,j)=><div className="mobile-network-resource" key={j}><dt><Inline text={row[0]}/></dt><dd>{row.slice(1).map((text,k)=><p key={k}><Inline text={text}/></p>)}</dd></div>)}</dl>:<Table key={i} headers={block.headers} rows={block.rows}/>;
+ if(block.type==='table')return <Table key={i} headers={block.headers} rows={block.rows}/>;
  return null;
 });}
 export default function FlussstroemungPage(){return <div className="flow-page" lang="de">
@@ -64,6 +64,10 @@ export default function FlussstroemungPage(){return <div className="flow-page" l
  <div className="container full-layout"><aside className="full-contents" aria-label="Inhaltsverzeichnis"><span className="eyebrow">In dieser Geschichte</span>{flowStory.sections.map((section,i)=><a key={section.id} href={'#'+section.id}><span className="mono contents-number">{String(i+1).padStart(2,'0')}</span>{section.title.replace(/^\d+ · /,'')}</a>)}<a href="#map">Anwendung ↗</a><a href="#sources">Quellen und Dokumentation</a></aside><article className="full-reading"><div className="mobile-network-article migrated-article flow-article">
  {flowStory.sections.map(section=>{const [heading,...body]=section.blocks;return <section className="flow-story-section" key={section.id} aria-labelledby={section.id}><h2 id={section.id}>{heading.text}</h2><Blocks items={body}/></section>;})}
  <h2 id="map">Die Flussströmung erkunden</h2><MapEmbed url={embeddedApplication} title="Flussströmung" caption="HydroSHEDS / Globale Flussnetze und saisonaler Abfluss"/>
- <div className="sources-container flow-sources"><h2 id="sources">Quellen und Dokumentation</h2>{referenceGroups.map((group,i)=><DocumentationDetails key={group.title} title={group.title}><div className={i>0?'flow-reference-list':undefined}><Blocks items={group.blocks} resources={i===1}/></div></DocumentationDetails>)}<Blocks items={flowStory.sources.blocks}/></div>
+ <div className="sources-container flow-sources"><ProjectSources
+ data={<SourceBlocks blocks={referenceGroups[0].blocks} Inline={Inline} listsAsResources={false}/>}
+ libraries={<SourceBlocks blocks={referenceGroups[1].blocks} Inline={Inline}/>}
+ documentation={<div className="flow-reference-list"><SourceBlocks blocks={referenceGroups[2].blocks} Inline={Inline} listsAsResources={false}/></div>}
+ /><Blocks items={flowStory.sources.blocks}/></div>
  </div></article></div><ProjectNavigation projectId="flussstroemung"/>
  </div>;}

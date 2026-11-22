@@ -2,7 +2,7 @@ import { siteUrl } from "./site-paths.js";import React from 'react';
 import Code from './CodeBlock.jsx';
 import MapEmbed from './MapEmbed.jsx';
 import { AppendixProvider, AppendixLink, TechnicalAppendix, AppendixSection } from './TechnicalAppendix.jsx';
-import ProjectSources from './ProjectSources.jsx';
+import ProjectSources,{SourceResources} from './ProjectSources.jsx';
 import './full-article.css';
 
 const originalCode = 'https://github.com/Kirman442/mobile-network-map/tree/c45c2e86145b8409efae4f45388d39444a0d8c05';
@@ -49,13 +49,8 @@ function Comparison({ caption, headers, rows }) {
         </table>
     </div>;
 }
-function ResourceList({ items }) {
-  return <dl className="mobile-network-resources text-medium text-dark-gray">
-        {items.map(({ name, description, href }) => <div className="mobile-network-resource" key={typeof name==='string'?name:description}>
-            <dt >{href ? <ExternalLink href={siteUrl(href)}>{name}</ExternalLink> : name}</dt>
-            <dd>{description}</dd>
-        </div>)}
-    </dl>;
+function ResourceList({items}){
+  return <SourceResources className="text-medium text-dark-gray" rows={items.map(({name,description,href})=>({name:href?<ExternalLink href={siteUrl(href)}>{name}</ExternalLink>:name,paragraphs:[description]}))}/>;
 }
 const projectTools = [
 { name: 'Apache Arrow JavaScript', description: 'Reads Arrow IPC and exposes the numeric data as TypedArray views.', href: 'https://arrow.apache.org/js/current/' },

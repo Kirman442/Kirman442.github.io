@@ -4,7 +4,7 @@ import {splitStory} from './energieatlas-markdown.js';
 import {siteUrl} from './site-paths.js';
 import {Arrow} from './components.jsx';
 import {AppendixProvider,AppendixLinks,AppendixSection,TechnicalAppendix} from './TechnicalAppendix.jsx';
-import DocumentationDetails from './DocumentationDetails.jsx';
+import ProjectSources,{SourceBlocks} from './ProjectSources.jsx';
 import MapEmbed from './MapEmbed.jsx';
 import './full-article.css';
 import './unfallatlas-trial.css';
@@ -20,12 +20,12 @@ function Inline({text}){
     return token;
   });
 }
-function Blocks({blocks,resources=false}){
+function Blocks({blocks}){
   return blocks.map((block,i)=>{
     if(block.type==='paragraph')return <p key={i}><Inline text={block.text}/></p>;
     if(block.type==='heading'){const Heading=block.level===4?'h4':'h3';return <Heading key={i}><Inline text={block.text}/></Heading>;}
     if(block.type==='list')return <ul className="energy-source-list" key={i}>{block.items.map((text,j)=><li key={j}><Inline text={text}/></li>)}</ul>;
-    if(block.type==='table')return resources?<dl className="mobile-network-resources trial-resources" key={i}>{block.rows.map((row,j)=><div className="mobile-network-resource" key={j}><dt><Inline text={row[0]}/></dt><dd>{row.slice(1).map((text,k)=><p key={k}><Inline text={text}/></p>)}</dd></div>)}</dl>:<div className="mobile-network-table-scroll" key={i} role="region" tabIndex={0} aria-label={block.headers.join(' / ')}><table className="mobile-network-table"><thead><tr>{block.headers.map((text,j)=><th scope="col" key={j}><Inline text={text}/></th>)}</tr></thead><tbody>{block.rows.map((row,j)=><tr key={j}>{row.map((text,k)=><td key={k}><Inline text={text}/></td>)}</tr>)}</tbody></table></div>;
+    if(block.type==='table')return <div className="mobile-network-table-scroll" key={i} role="region" tabIndex={0} aria-label={block.headers.join(' / ')}><table className="mobile-network-table"><thead><tr>{block.headers.map((text,j)=><th scope="col" key={j}><Inline text={text}/></th>)}</tr></thead><tbody>{block.rows.map((row,j)=><tr key={j}>{row.map((text,k)=><td key={k}><Inline text={text}/></td>)}</tr>)}</tbody></table></div>;
     return null;
   });
 }
@@ -39,7 +39,12 @@ export default function EnergieatlasPage(){
       {story.narrative.map((section,i)=><React.Fragment key={section.id}><h2 id={section.id}>{section.title}</h2><Blocks blocks={section.blocks}/>{references[i]?.length>0&&<AppendixLinks items={references[i].map(number=>({target:story.notes[number-1].id,origin:`energy-reading-${i+1}-${number}`,label:story.notes[number-1].title}))}/>}</React.Fragment>)}
       <h2 id="map">EnergieAtlas erkunden</h2><MapEmbed url="https://kirman442.github.io/energie-atlas/" title="EnergieAtlas" caption="Deutschland / Solar- und Windenergie"/>
       <h2 id="technical-appendix">Technischer Anhang</h2><TechnicalAppendix description="Datenaufbereitung, geografische Prüfungen, Vergleiche und Bereitstellung im Browser. Die Links in der Geschichte öffnen jeweils den passenden technischen Hinweis.">{story.notes.map(note=><AppendixSection id={note.id} title={note.title} key={note.id}><Blocks blocks={note.blocks}/></AppendixSection>)}</TechnicalAppendix>
-      <div className="sources-container trial-sources"><h2 id="sources">Quellen und Dokumentation</h2>{story.sourceGroups.map(group=>group.title==='Projektbeteiligte'?<section key={group.id}><h3>{group.title}</h3><Blocks blocks={group.blocks} resources/></section>:<DocumentationDetails key={group.id} title={group.title}><Blocks blocks={group.blocks} resources/></DocumentationDetails>)}<DocumentationDetails title="Dokumentation und weiterführende Materialien"><Blocks blocks={story.documentation} resources/></DocumentationDetails></div>
+      <div className="sources-container trial-sources"><ProjectSources
+ credits={<SourceBlocks blocks={story.sourceGroups.find(group=>group.title==='Projektbeteiligte').blocks} Inline={Inline} credits/>}
+ data={<SourceBlocks blocks={story.sourceGroups.find(group=>group.title==='Daten und Methodik').blocks} Inline={Inline} listsAsResources={false}/>}
+ libraries={<SourceBlocks blocks={story.sourceGroups.find(group=>group.title==='Pakete und Bibliotheken').blocks} Inline={Inline}/>}
+ documentation={<SourceBlocks blocks={story.documentation} Inline={Inline} listsAsResources={false}/>}
+ /></div>
     </div></article></div></AppendixProvider>
     <div className="container energy-end"><a className="quiet-link" href={siteUrl('/#projekte')}>← Zurück zu den Projekten</a></div>
   </div>;

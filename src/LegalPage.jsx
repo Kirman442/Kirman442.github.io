@@ -4,15 +4,15 @@ import {legalDetails} from './legal-details.js';
 import './legal.css';
 
 const apps = [
-  ['U-Bahn in der Tiefe','https://kirman442.github.io/ubahn-3d/'],
-  ['Flussströmung','https://kirman442.github.io/hydrorivers_v2/'],
-  ['EnergieAtlas','https://kirman442.github.io/energie-atlas/'],
-  ['MobileNetwork','https://mobile-network-map.netlify.app/'],
-  ['Unfallkarte Deutschland','https://kirman442.github.io/accidents/'],
-  ['Unfallatlas Deutschland','https://unfallatlas.netlify.app/accidents/app.html'],
-  ['Ladeinfrastruktur','https://kirman442.github.io/charging-points/'],
+  ['U-Bahn in der Tiefe','https://kirman442.github.io/ubahn-3d/',null,null,'GitHub Pages; Netz-, Gelände- und Kartendaten werden mit der Anwendung ausgeliefert. Darstellungsoptionen werden im Local Storage gespeichert. Datenschutz und Impressum öffnen Sie über die gleichnamigen Schaltflächen in der Anwendung.'],
+  ['Flussströmung','https://kirman442.github.io/hydrorivers_v2/','https://kirman442.github.io/hydrorivers_v2/legal.html#datenschutz','https://kirman442.github.io/hydrorivers_v2/legal.html#impressum','GitHub Pages; Kartenhintergrund von CARTO und bei aktiviertem Relief Höhenkacheln von Amazon Web Services. Gewählte Anzeige- und Druckoptionen werden im Local Storage gespeichert.'],
+  ['EnergieAtlas','https://kirman442.github.io/energie-atlas/','https://kirman442.github.io/energie-atlas/#/overview?info=datenschutz','https://kirman442.github.io/energie-atlas/#/overview?info=impressum','GitHub Pages; CARTO für Kartenhintergrund und Kartenbeschriftung. Die gewählte Darstellung wird im Local Storage, Rücksprungpunkte werden im Session Storage gespeichert.'],
+  ['MobileNetwork','https://mobile-network-map.netlify.app/','https://mobile-network-map.netlify.app/#datenschutz','https://mobile-network-map.netlify.app/#impressum','Netlify für Anwendung und Datendateien; Kartenhintergrund von CARTO. Karten- und Palettenauswahl bleiben im Arbeitsspeicher der geöffneten Seite.'],
+  ['Unfallkarte Deutschland','https://kirman442.github.io/accidents/','https://kirman442.github.io/accidents/#datenschutz','https://kirman442.github.io/accidents/#impressum','GitHub Pages; Abruf öffentlicher Unfalldaten über Supabase, Kartenhintergrund von CARTO. Karten- und Filtereinstellungen bleiben im Arbeitsspeicher.'],
+  ['Unfallatlas Deutschland','https://unfallatlas.netlify.app/accidents/app.html','https://unfallatlas.netlify.app/accidents/app.html?screen=about#about-privacy','https://unfallatlas.netlify.app/accidents/app.html?screen=about','Netlify für Anwendung und Datendateien; Kartenhintergrund von CARTO. Angaben zum Browser-Speicher und zu den einzelnen Funktionen stehen in den Datenschutzhinweisen der Anwendung.'],
+  ['Ladeinfrastruktur','https://kirman442.github.io/charging-points/','https://kirman442.github.io/charging-points/datenschutz.html#datenschutz','https://kirman442.github.io/charging-points/impressum.html','GitHub Pages; Kartenhintergrund von CARTO. Die gewählte helle oder dunkle Darstellung wird im Local Storage gespeichert; Filter und Ansichten können Bestandteil der URL sein.'],
   ['Bayern','https://kirman442.github.io/bayern/'],
-  ['Berliner U-Bahn','https://kirman442.github.io/berlinmetro/'],
+  ['Berliner U-Bahn','https://kirman442.github.io/berlinmetro/','https://kirman442.github.io/berlinmetro/#datenschutz','https://kirman442.github.io/berlinmetro/#impressum','GitHub Pages für Anwendung, Fachdaten, Kartenkacheln und Kartenschriften. Jahr, Linienauswahl und Kartenansicht bleiben im Arbeitsspeicher.'],
   ['Clustering','https://kirman442.github.io/ookla/'],
 ];
 function Contact(){
@@ -28,7 +28,7 @@ function Privacy(){
       <p>Die Portfolio-Oberfläche enthält keine eigene Besuchsanalyse, keine Werbetracker und kein Kontaktformular. Schriften und Bilder werden mit der Website ausgeliefert. Der Portfolio-Code setzt selbst keine Cookies und speichert keine Besuchereinstellungen im Browser. Für die eingebetteten Anwendungen gilt der gesonderte Abschnitt unten.</p>
       <h3>Hosting mit GitHub Pages</h3>
       <p>Das Portfolio wird auf GitHub Pages bereitgestellt. GitHub nennt als Datenschutzkontakte GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA, und GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande. Datenschutzkontakt: <a href="mailto:dpo@github.com">dpo@github.com</a>.</p>
-      <p>Bei der Auslieferung erhält GitHub technische Verbindungsdaten. Für Pages bestätigt GitHub ausdrücklich die Protokollierung von IP-Adressen zur Sicherheit, auch ohne Anmeldung.</p>
+      <p>Bei der Auslieferung erhält GitHub technische Verbindungsdaten. Für Pages bestätigt GitHub ausdrücklich die Protokollierung von IP-Adressen zur Sicherheit, auch ohne Anmeldung. Die verlinkte allgemeine Datenschutzerklärung beschreibt die Verarbeitung, für die GitHub selbst als Verantwortlicher handelt.</p>
       <p>Die technische Bereitstellung des Portfolios dient meinem berechtigten Interesse an einer erreichbaren, sicheren Darstellung meiner beruflichen Arbeiten (Art. 6 Abs. 1 Buchst. f DSGVO). Dies ist keine pauschale Rechtsgrundlage für alle Vorgänge innerhalb eingebetteter Anwendungen.</p>
       <p>GitHub beschreibt Verarbeitung auch in den USA und anderen Ländern sowie Standardvertragsklauseln und das EU-U.S. Data Privacy Framework als Transfermechanismen. Die Datenschutzerklärung nennt zweck- und gesetzesabhängige Aufbewahrung, aber keine feste Frist speziell für Pages-IP-Protokolle. Eine bestimmte Anzahl von Tagen wird deshalb hier nicht zugesichert.</p>
       <p><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub Pages: Datenerhebung</a> · <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a></p>
@@ -42,9 +42,9 @@ function Privacy(){
     <section id="anwendungen"><h2>4. Eingebettete Karten und Anwendungen</h2>
       <p>Einige Projektseiten zeigen eigenständige Anwendungen in einem eingebetteten Fenster. Diese laden automatisch beim Aufruf der Projektseite. Dabei entstehen Verbindungen zu den jeweiligen Hosting-Diensten; die Anwendung kann weitere Daten- und Kartendienste aufrufen. Die IP-Adresse wird bei diesen Verbindungen an die angesprochenen Dienste übermittelt.</p>
       <p>„Separat öffnen“ öffnet die jeweilige Anwendung als eigene Seite. Dort angebotene Datenschutzhinweise ergänzen die Angaben zur Einbindung in dieses Portfolio.</p>
-      <ul className="legal-apps">{apps.map(([name,url])=><li key={url}><a href={url}>{name} ↗</a><span>{new URL(url).hostname}</span></li>)}</ul>
-      <p><a href="https://unfallatlas.netlify.app/accidents/app.html?screen=about#about-privacy">Unfallatlas Deutschland - Datenschutzhinweise der Anwendung</a></p>
-      <p>Die Datenschutzhinweise zu U-Bahn in der Tiefe sind über die Schaltfläche „Datenschutz“ in der <a href="https://kirman442.github.io/ubahn-3d/">Anwendung</a> erreichbar.</p>
+      <ul className="legal-apps">{apps.map(([name,url,privacy,imprint,details])=><li key={url}><a href={url}>{name} ↗</a><span>{new URL(url).hostname}</span>{details&&<p>{details}</p>}{privacy&&<p><a href={privacy}>Datenschutz</a> · <a href={imprint}>Impressum</a></p>}</li>)}</ul>
+      <p>CARTO erhält bei Kartenanfragen die IP-Adresse und technische Anfragedaten; die angeforderten Kacheln lassen den betrachteten Kartenausschnitt erkennen. Bei Unfallkarte Deutschland erhält auch Supabase die zur Datenabfrage notwendigen Verbindungsdaten. Bei aktiviertem Relief in Flussströmung entstehen zusätzlich Verbindungen zu Amazon Web Services. Welche Dienste in einer Anwendung eingesetzt werden und welche Angaben zur Aufbewahrung und zu möglichen Verarbeitungen außerhalb der EU und des EWR gelten, erläutern die oben verlinkten Datenschutzhinweise.</p>
+      <p>Einstellungen im Local Storage bleiben bis zu ihrer Änderung oder Löschung durch Sie bzw. den Browser erhalten. Session Storage dient der Sitzung; eine Sitzungswiederherstellung des Browsers kann diese Daten länger erhalten. Der gewöhnliche HTTP-Cache des Browsers ist davon zu unterscheiden. URL-basierte Ansichten können im Browserverlauf stehen und werden beim Teilen eines Links weitergegeben.</p>
       <p>Anwendungen auf kirman442.github.io teilen sich mit dem Portfolio denselben Browser-Ursprung. Eine Trennung der URL-Pfade allein trennt deshalb beispielsweise den localStorage nicht.</p>
     </section>
     <section id="rechte"><h2>5. Ihre Rechte</h2>
@@ -66,6 +66,6 @@ function Imprint(){
 }
 export default function LegalPage({type}){
   const privacy=type==='privacy';
-  return <article className="container legal-page" lang="de"><header><p className="eyebrow">Karten &amp; Code / Rechtliche Hinweise</p><h1>{privacy?'Datenschutzerklärung':'Impressum'}</h1><p className="legal-date mono">Stand: {privacy?'21. November 2026':'20. Oktober 2026'}</p></header>
+  return <article className="container legal-page" lang="de"><header><p className="eyebrow">Karten &amp; Code / Rechtliche Hinweise</p><h1>{privacy?'Datenschutzerklärung':'Impressum'}</h1><p className="legal-date mono">Stand: {privacy?'22. November 2026':'20. Oktober 2026'}</p></header>
     <div className="legal-copy">{privacy?<Privacy/>:<Imprint/>}</div><nav className="legal-related" aria-label="Weitere rechtliche Hinweise"><a href={siteUrl('/')}>← Zur Projektübersicht</a><a href={siteUrl(privacy?'/impressum/':'/datenschutz/')}>{privacy?'Impressum':'Datenschutz'} ↗</a></nav></article>;
 }

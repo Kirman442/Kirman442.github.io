@@ -64,3 +64,9 @@ Der Generator liest den gesamten Projektkatalog, berücksichtigt EXIF-Ausrichtun
 Der Workflow **Publish Karten & Code to kc** wird manuell in GitHub Actions gestartet. Er installiert die Abhängigkeiten, führt die Prüfungen aus und veröffentlicht `dist/` über GitHub Pages. `npm run check:publication` prüft das Zielrepository und meldet offene rechtliche Prüfpunkte; diese Prüfung ist keine rechtliche Freigabe.
 
 Das frühere Portfolio unter `/gis/` bleibt eine unabhängige Website und wird durch diesen Workflow nicht geändert.
+
+## Общие источники проектных историй
+
+`src/ProjectSources.jsx` задаёт единое оформление: существующие участники первыми, затем три независимо раскрываемых блока. `SourceBlocks` принимает Markdown-блоки, а `SourceResources` строит строки из готовых React-данных; отдельные рендереры `dl/dt/dd` в страницах не нужны. Описания строк имеют структуру `<dd><p>…</p></dd>`. Обычные абзацы и списки сохраняют свою семантику.
+
+При изменении источников сохранять язык страницы, весь текст и полный набор URL, включая ссылки в описаниях. Пример проверки унификации и её границы: `docs/maintenance-2026-11-22.md`.

@@ -5,5 +5,5 @@ import {siteRoutes} from '../src/routes.js';
 assert.ok(!siteRoutes.some(route=>route.localOnly),'Publication blocked: a local review page has not been approved for release.');
 assert.ok(legalDetails.postalAddress.length>=2,'Publication blocked: complete postal address is missing.');
 if(process.env.GITHUB_REPOSITORY)assert.equal(process.env.GITHUB_REPOSITORY.toLowerCase(),siteConfig.repository.toLowerCase(),'This workflow is prepared only for the new kc repository.');
-if(legalDraft)console.warn('Datenschutz remains a draft; completion deferred by the owner on 2026-10-20.\n'+legalOpenItems.join('\n'));
+if(legalDraft)console.warn('Datenschutz has unresolved review items; see src/legal-details.js (reviewed 2026-11-22).\n'+legalOpenItems.join('\n'));
 console.log('Publication target checked: '+siteConfig.repository+'. This command does not publish or record owner approval.');
