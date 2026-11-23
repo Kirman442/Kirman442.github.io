@@ -3,7 +3,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {labels,useLocale} from './locale.jsx';
 
 export default function MapEmbed(props){return <InteractiveEmbed key={props.url} {...props}/>;}
-function InteractiveEmbed({url='https://mobile-network-map.netlify.app/',title='MobileNetwork',caption='Current Arrow IPC + Brotli version'}) {
+function InteractiveEmbed({url='https://mobilfunk.krmn.app/',title='MobileNetwork',caption='Current Arrow IPC + Brotli version'}) {
   const t=labels[useLocale()];
   const [expanded,setExpanded]=useState(false),[attempt,setAttempt]=useState(0),[loadState,setLoadState]=useState('loading');
   const dialog=useRef(null),frame=useRef(null),expandButton=useRef(null),wasExpanded=useRef(false);

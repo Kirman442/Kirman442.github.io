@@ -2,7 +2,7 @@
 
 Persönliches Portfolio von Kirill Lisochenko: Geodaten, Kartografie und interaktive Webanwendungen.
 
-Website: **https://kirman442.github.io/kc/**
+Website: **https://gis.krmn.app/**
 
 React 18, Vite und eigenes CSS. Die Projektgeschichten werden beim Build als einzelne HTML-Seiten erzeugt; React ergänzt die interaktiven Komponenten im Browser.
 
@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Entwicklung: http://127.0.0.1:5183/kc/
+Die URL für die Entwicklung steht nach dem Start im Terminal.
 
 ## Build und Prüfung
 
@@ -28,7 +28,7 @@ npm run preview
 
 Der Preview-Server verwendet denselben Port wie der Entwicklungsserver; nur einen davon gleichzeitig starten.
 
-Der Build erzeugt HTML, Metadaten, Sitemap und Weiterleitungen innerhalb von `/kc/`. Anschließend werden interne Links, Anker und die Groß-/Kleinschreibung von Dateinamen geprüft. Die Client-Tests prüfen React-Hydration und ausgewählte Interaktionen in jsdom. Sie ersetzen keine visuelle Browserprüfung und prüfen nicht die extern gehosteten Kartenanwendungen.
+Der Build erzeugt HTML, Metadaten, Sitemap und Weiterleitungen für den in `site.config.mjs` konfigurierten Basis-Pfad. Anschließend werden interne Links, Anker und die Groß-/Kleinschreibung von Dateinamen geprüft. Die Client-Tests prüfen React-Hydration und ausgewählte Interaktionen in jsdom. Sie ersetzen keine visuelle Browserprüfung und prüfen nicht die extern gehosteten Kartenanwendungen.
 
 ## Inhalte bearbeiten
 
@@ -39,7 +39,7 @@ Der Build erzeugt HTML, Metadaten, Sitemap und Weiterleitungen innerhalb von `/k
 - `src/LegalPage.jsx`, `src/legal-details.js`: rechtliche Informationen und offene Prüfpunkte.
 - `src/components.jsx`, `src/SiteHeader.jsx`, `src/MapEmbed.jsx`: gemeinsame Komponenten.
 - `public/`: Bilder, Video und Browser-Icons.
-- `site.config.mjs`: Basis-Pfad `/kc/`, Origin und Zielrepository.
+- `site.config.mjs`: Basis-Pfad, öffentliche Origin und Zielrepository.
 
 `dist/` wird generiert und nicht von Hand bearbeitet. Eingebettete Anwendungen werden unabhängig von diesem Repository veröffentlicht.
 

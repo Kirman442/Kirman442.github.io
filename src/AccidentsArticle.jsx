@@ -56,7 +56,7 @@ export default function AccidentsArticle() {return <div className="mobile-networ
                                 Weil unser technischer Stack so effizient ist, mussten wir uns gar nicht erst mit räumlichen Abfragen über die Datenbank rumschlagen – bei so einer Datenmenge geht das in React auf der Client-Seite viel einfacher und schneller. Das Rendern ist sofort da, wir brauchen keine extra Anfragen an die Datenbank zu schicken, sehr erfreulich. Am Ende haben wir eine richtig leistungsstarke Anwendung bekommen, um Verkehrsunfälle in ganz Deutschland zu visualisieren und zu analysieren.
                             </p>
     <h2 id="map">Web-App</h2>
-    <MapEmbed url="https://kirman442.github.io/accidents/" title="Unfallkarte Deutschland" caption="React / Supabase / deck.gl" />
+    <MapEmbed url="https://gis.krmn.app/accidents/" title="Unfallkarte Deutschland" caption="React / Supabase / deck.gl" />
     <h2 id="section-6">Weiterentwicklung und Optimierung</h2>
     <p>
                                     Einige Zeit nach Abschluss der ersten Version habe ich mich entschieden, zu diesem Projekt zurückzukehren. Die Anwendung funktionierte bereits gut, aber inzwischen wollte ich nicht mehr nur testen, ob sich rund 269.000 Datensätze mit React, Supabase und deck.gl performant darstellen lassen. Diesmal ging es darum, die bestehende Lösung genauer zu analysieren, Schwachstellen zu finden und sowohl die Datenbereitstellung als auch das Rendering und die Filterung weiter zu optimieren.

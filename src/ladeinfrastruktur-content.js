@@ -118,7 +118,7 @@ export default {
         },
         {
           "type": "paragraph",
-          "text": "[Anwendung öffnen](https://kirman442.github.io/charging-points/) · [Quellcode](https://github.com/Kirman442/charging-points)"
+          "text": "[Anwendung öffnen](https://gis.krmn.app/charging-points/) · [Quellcode](https://github.com/Kirman442/charging-points)"
         }
       ]
     }

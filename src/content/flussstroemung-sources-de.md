@@ -12,7 +12,7 @@
 
 **Vergleichswerte** - Abfluss nach [Dai et al. (2009)](https://doi.org/10.1175/2008JCLI2592.1), Flusslängen nach Encyclopaedia Britannica; Nachschlagewerte, keine Kartenwerte.
 
-**Methodische Grundlagen** - Gerinnebreite nach [Leopold & Maddock (1953)](https://doi.org/10.3133/pp252), Wassertemperatur nach [Mohseni et al. (1998)](https://doi.org/10.1029/98WR01877). Berechnungen und Grenzen erläutert die [Methode in der Anwendung](https://kirman442.github.io/hydrorivers_v2/methode.html).
+**Methodische Grundlagen** - Gerinnebreite nach [Leopold & Maddock (1953)](https://doi.org/10.3133/pp252), Wassertemperatur nach [Mohseni et al. (1998)](https://doi.org/10.1029/98WR01877). Berechnungen und Grenzen erläutert die [Methode in der Anwendung](https://gis.krmn.app/hydrorivers_v2/methode.html).
 
 **[CARTO](https://carto.com/attributions) / [OpenStreetMap](https://www.openstreetmap.org/copyright)** - Grundkarte Dark Matter; ODbL für OSM-Daten.
 
@@ -48,7 +48,7 @@ Klassen der Flusstypen und ihre Ableitung
 **[GloFAS-Reanalyse im Early Warning Data Store](https://ewds.climate.copernicus.eu/datasets/cems-glofas-historical)**
 Beschreibung des Datensatzes, Variablen und Zugang
 
-**[Methode in der Anwendung](https://kirman442.github.io/hydrorivers_v2/methode.html)**
+**[Methode in der Anwendung](https://gis.krmn.app/hydrorivers_v2/methode.html)**
 Wie jede Zahl der Karte berechnet wird und wo sie von Atlaswerten abweicht
 
 **[Quellcode und Anleitung auf GitHub](https://github.com/Kirman442/hydrorivers_v2)**

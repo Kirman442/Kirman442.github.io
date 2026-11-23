@@ -6,7 +6,7 @@ export default {
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Dieses Projekt ist aus einer einfachen Unfallkarte entstanden. Bei [Accidents](https://kirman442.github.io/gis/portfolio/Accidents) wollte ich herausfinden, wie ein Browser mit Hunderttausenden von Punkten zurechtkommt: Wie schnell lassen sie sich laden, darstellen und filtern? Die Daten zu Verkehrsunfällen in Deutschland boten dafür eine gute Grundlage. Jeder Datensatz enthielt Koordinaten und Merkmale für die Filterung, und das Ergebnis war unmittelbar auf der Karte sichtbar."
+          "text": "Dieses Projekt ist aus einer einfachen Unfallkarte entstanden. Bei [Accidents](/projects/accidents) wollte ich herausfinden, wie ein Browser mit Hunderttausenden von Punkten zurechtkommt: Wie schnell lassen sie sich laden, darstellen und filtern? Die Daten zu Verkehrsunfällen in Deutschland boten dafür eine gute Grundlage. Jeder Datensatz enthielt Koordinaten und Merkmale für die Filterung, und das Ergebnis war unmittelbar auf der Karte sichtbar."
         },
         {
           "type": "paragraph",
@@ -160,7 +160,7 @@ export default {
       "blocks": [
         {
           "type": "paragraph",
-          "text": "[Unfallatlas Deutschland öffnen](https://unfallatlas.netlify.app/)."
+          "text": "[Unfallatlas Deutschland öffnen](https://unfallatlas.krmn.app/)."
         },
         {
           "type": "paragraph",
@@ -573,7 +573,7 @@ export default {
         ],
         "rows": [
           [
-            "[Accidents - das Vorgängerprojekt](https://kirman442.github.io/gis/portfolio/Accidents)",
+            "[Accidents - das Vorgängerprojekt](/projects/accidents)",
             "Ausgangspunkt der Idee und erste Erfahrungen mit schneller Darstellung und Filterung"
           ],
           [
@@ -609,11 +609,11 @@ export default {
             "Vereinfachung zusammenhängender Gebietsgrenzen unter Erhaltung der topologischen Abdeckung"
           ],
           [
-            "[Methodik der Anwendung](https://unfallatlas.netlify.app/accidents/app.html?screen=methodology)",
+            "[Methodik der Anwendung](https://unfallatlas.krmn.app/accidents/app.html?screen=methodology)",
             "Verwendete Formeln, Bezugsgrößen und Einschränkungen"
           ],
           [
-            "[Begriffe der Anwendung](https://unfallatlas.netlify.app/accidents/app.html?screen=dictionary)",
+            "[Begriffe der Anwendung](https://unfallatlas.krmn.app/accidents/app.html?screen=dictionary)",
             "Kategorien, Beteiligung, Bedingungen und Klassifikationen"
           ]
         ]

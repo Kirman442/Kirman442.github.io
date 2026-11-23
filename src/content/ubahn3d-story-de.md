@@ -17,7 +17,7 @@ Für die neue Karte habe ich drei Grundsätze festgelegt:
 - Umbenennungen sind getrennt und mit Datum erfasst. Deshalb wechselt ein Bahnhof am Zeitregler genau in dem Jahr seinen Namen, in dem das tatsächlich geschah (Oranienstraße am 18. Februar 1902 → Görlitzer Bahnhof am 14. Februar 1926).
 - Geisterbahnhöfe - Bahnhöfe, durch die die Züge während der Teilung Berlins ohne Halt fuhren - sind als leere Kreise dargestellt.
 
-Auch die Hintergrundkarte ist jetzt eine eigene. Statt ArcGIS-Kacheln wird eine einzige Datei `berlin.pmtiles` (Protomaps) verwendet, die zusammen mit der Anwendung ausgeliefert wird. Die Karte läuft jetzt mit MapLibre GL und hängt von keinem externen Dienst mehr ab. Die neue 2D-Version ist unter der bisherigen Adresse erreichbar: https://kirman442.github.io/berlinmetro/
+Auch die Hintergrundkarte ist jetzt eine eigene. Statt ArcGIS-Kacheln wird eine einzige Datei `berlin.pmtiles` (Protomaps) verwendet, die zusammen mit der Anwendung ausgeliefert wird. Die Karte läuft jetzt mit MapLibre GL und hängt von keinem externen Dienst mehr ab. Die neue 2D-Version ist hier erreichbar: https://gis.krmn.app/berlinmetro/
 
 ## Die Hauptfrage: Woher kommt die Tiefe?
 
