@@ -35,7 +35,6 @@ function Text({ children }) {
   return <p className="text-medium text-dark-gray line-height-28 sm-line-height-26">{children}</p>;
 }
 function ExternalLink({ href, children }) {
-  if (href === 'https://kirman442.github.io/gis/portfolio/Accidents') return <a className="text-decoration-underline" href={siteUrl("/projects/accidents")}>{children}</a>;
   return <a className="text-decoration-underline" href={siteUrl(href)} target="_blank" rel="noopener noreferrer">{children}</a>;
 }
 function Comparison({ caption, headers, rows }) {
@@ -104,7 +103,7 @@ function TechnicalDetails({ title, children }) {
 export default function FullArticle() {
   return <AppendixProvider><div className="mobile-network-article">
         <h2 id="story-start">Taking a larger dataset into the browser</h2>
-        <Text>MobileNetwork grew out of my earlier experiments with interactive maps, including the <ExternalLink href={siteUrl("https://kirman442.github.io/gis/portfolio/Accidents")}>Accidents project</ExternalLink>. This time I wanted to work with a much larger collection of points and explore what it takes to make that data useful directly in a browser. Kyle Barron&apos;s articles on Arrow, GeoParquet and deck.gl gave me a starting point, including an example using Ookla data.</Text>
+        <Text>MobileNetwork grew out of my earlier experiments with interactive maps, including the <a className="text-decoration-underline" href={siteUrl("/projects/accidents")}>Accidents project</a>. This time I wanted to work with a much larger collection of points and explore what it takes to make that data useful directly in a browser. Kyle Barron&apos;s articles on Arrow, GeoParquet and deck.gl gave me a starting point, including an example using Ookla data.</Text>
         <Text>The result is a map of mobile internet performance across <b>42 countries and 1,235,099 tile records</b>. React handles the interface, MapLibre GL displays the CARTO vector basemap, and deck.gl draws the points and the record-density layer. In the current version, the data reaches the browser as Apache Arrow IPC files compressed with Brotli.</Text>
         <Text>The first version already worked. Returning to it gave me an opportunity to look more closely at the work behind the map: downloading files, decoding them, moving arrays between threads and preparing colours. For this revision, I worked with OpenAI Codex on the analysis, a separate prototype and the implementation, then tested the results and chose which changes to keep.</Text>
 
@@ -147,7 +146,7 @@ export default function FullArticle() {
         <Text>For now, the result brings the original idea closer to what I wanted: a large collection of mobile performance data that can be explored in a browser, with a loading pipeline I can explain and test. Parquet remains useful in data preparation; the published map receives prepared Arrow files and spends more of its work on reading and displaying them.</Text>
         <AppendixLink target="appendix-note-7" origin="article-note-7">Whole-page loading observations and caching</AppendixLink>
         <AppendixLink target="appendix-note-8" origin="article-note-8">How this approach relates to other GIS formats and map libraries</AppendixLink>
-        <Text><ExternalLink href={siteUrl(currentCode)}>Current source code</ExternalLink> · <ExternalLink href={siteUrl("https://mobile-network-map.netlify.app/")}>Open the current map</ExternalLink></Text>
+        <Text><ExternalLink href={siteUrl(currentCode)}>Current source code</ExternalLink> · <ExternalLink href={siteUrl("https://mobilfunk.krmn.app/")}>Open the current map</ExternalLink></Text>
 
 
         <details className="mobile-network-history" id="previous-version">

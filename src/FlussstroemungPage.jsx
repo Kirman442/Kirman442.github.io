@@ -11,7 +11,7 @@ import {ManningCalculator,SectionBars,SlopeChart,SeasonChart,TemperatureChart,De
 import './full-article.css';
 import './flussstroemung.css';
 
-const application='https://kirman442.github.io/hydrorivers_v2/';
+const application='https://gis.krmn.app/hydrorivers_v2/';
 // Open the app's normal initial view directly, without its welcome dialog stealing focus.
 const embeddedApplication=application+'?view=as&basin=ganges&m=7&c=t';
 

@@ -1,5 +1,5 @@
 export const siteConfig = {
   base: '/kc/',
-  origin: 'https://kirman442.github.io',
-  repository: 'Kirman442/kc',
+  origin: 'https://gis.krmn.app',
+  publicationRepositories: ['Kirman442/kc', 'Kirman442/Kirman442.github.io'],
 };

@@ -86,7 +86,7 @@ for(const route of siteRoutes){
   await scroll(0);assert.ok(!header.classList.contains('site-header-hidden'),'Header should remain visible at the top');
   assert.equal(window.document.querySelectorAll('.home-project-card').length,12);
   assert.equal(window.document.querySelector('.home-project-card').dataset.projectId,'ubahn3d');
-  assert.equal(window.document.querySelector('.home-featured .featured-map').getAttribute('href'),'/kc/projects/ladeinfrastruktur');
+  assert.equal(window.document.querySelector('.home-featured .featured-map').getAttribute('href'),siteConfig.base+'projects/ladeinfrastruktur');
   const button=[...window.document.querySelectorAll('.project-filters button')].find(item=>item.textContent==='3D & Geodaten');button.click();await new Promise(resolve=>setTimeout(resolve,20));
   assert.equal(window.document.querySelector('.project-count').textContent,'2 Projekte');
   const trigger=window.document.querySelector('.projects-trigger');trigger.click();await new Promise(resolve=>setTimeout(resolve,20));

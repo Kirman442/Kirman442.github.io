@@ -5,7 +5,7 @@ const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=u
 http.createServer((request,response)=>{
  try{
   const url=new URL(request.url,'http://localhost');
-  if(url.pathname==='/'||url.pathname===base.slice(0,-1)){response.writeHead(302,{Location:base+url.search});response.end();return;}
+  if(base!=='/'&&(url.pathname==='/'||url.pathname===base.slice(0,-1))){response.writeHead(302,{Location:base+url.search});response.end();return;}
   let filename=path.resolve(root,decodeURIComponent(url.pathname.slice(base.length)));let status=200;
   if(!url.pathname.startsWith(base)||!filename.startsWith(root+path.sep)&&filename!==root){response.writeHead(404);response.end('Not found');return;}
   if(fs.existsSync(filename)&&fs.statSync(filename).isDirectory()){

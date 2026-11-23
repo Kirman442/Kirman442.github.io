@@ -6,6 +6,9 @@ import {siteRoutes,legacyRoutes} from '../src/routes.js';
 import {siteConfig} from '../site.config.mjs';
 const root=path.resolve(import.meta.dirname,'..'),dist=path.join(root,'dist');
 const {origin,base}=siteConfig;
+const previewOrigin='https://portfolio.test';
+const routeUrl=pathname=>pathname==='/'?'/':pathname+'/';
+const canonical=pathname=>origin+routeUrl(pathname);
 let checkedLinks=0,checkedFiles=0;const pages=[];
 function existsWithExactCase(filename){
  let current=dist;
@@ -17,7 +20,9 @@ function existsWithExactCase(filename){
 }
 for(const route of siteRoutes){
  const filename=path.join(dist,route.path==='/'?'index.html':route.path.slice(1)+'/index.html');
- const html=fs.readFileSync(filename,'utf8');const dom=new JSDOM(html,{url:origin+base+route.path.slice(1)+'/'}),document=dom.window.document;
+ const html=fs.readFileSync(filename,'utf8');
+ const deployedPath=base+routeUrl(route.path).slice(1);
+ const dom=new JSDOM(html,{url:previewOrigin+deployedPath}),document=dom.window.document;
  assert.equal(document.querySelectorAll('h1').length,1,route.path+' must have one h1');
  assert.equal(document.documentElement.lang,route.lang);
  for(const image of document.querySelectorAll('.article-figure img,.author-photo img')){
@@ -29,9 +34,12 @@ for(const route of siteRoutes){
   assert.equal(frame.getAttribute('loading'),'eager');
   assert.equal(frame.hasAttribute('aria-hidden'),false);
  }
- const expectedCanonical=origin+base+(route.path==='/'?'':route.path.slice(1)+'/');
+ const expectedCanonical=canonical(route.path);
  assert.equal(document.querySelector('link[rel=canonical]')?.href,expectedCanonical);
  assert.equal(document.querySelector('meta[property="og:url"]')?.content,expectedCanonical);
+ const shareImage=new URL(document.querySelector('meta[property="og:image"]')?.content);
+ assert.equal(shareImage.origin,origin);
+ assert.ok(existsWithExactCase(path.join(dist,shareImage.pathname)),route.path+' missing share image');
  assert.ok(document.querySelector('meta[name=description]')?.content);
  assert.ok(!/Dresden|\/diagnostics\//.test(html),route.path+' includes excluded content');
  assert.equal(document.querySelector('meta[name=robots]')?.content==='noindex',Boolean(route.draft),route.path+' indexing status');
@@ -49,8 +57,7 @@ for(const route of siteRoutes){
   const value=element.getAttribute('href')||element.getAttribute('src')||element.getAttribute('poster');
   if(!value||/^(mailto:|tel:|data:|blob:)/.test(value))continue;
   if(value.startsWith('#')){assert.ok(document.getElementById(decodeURIComponent(value.slice(1))),route.path+' missing anchor '+value);continue;}
-  const url=new URL(value,dom.window.location.href);if(url.origin!==origin)continue;
-  if(!url.pathname.startsWith(base)&&/^https?:\/\//.test(value))continue;
+  const url=new URL(value,dom.window.location.href);if(url.origin!==previewOrigin)continue;
   assert.ok(url.pathname.startsWith(base),'URL escapes '+base+': '+value);checkedLinks++;
   const relative=decodeURIComponent(url.pathname.slice(base.length));let target=path.join(dist,relative);
   if(fs.existsSync(target)&&fs.statSync(target).isDirectory())target=path.join(target,'index.html');
@@ -63,10 +70,18 @@ for(const route of siteRoutes){
  }
  pages.push({path:route.path,language:route.lang,title:document.title,iframes:document.querySelectorAll('iframe').length});dom.window.close();
 }
-for(const alias of Object.keys(legacyRoutes))assert.ok(fs.existsSync(path.join(dist,alias.slice(1),'index.html')));
+for(const [alias,route] of Object.entries(legacyRoutes)){
+ const html=fs.readFileSync(path.join(dist,alias.slice(1),'index.html'),'utf8');
+ const dom=new JSDOM(html);
+ assert.equal(dom.window.document.querySelector('link[rel=canonical]')?.href,canonical(route));
+ assert.equal(dom.window.document.querySelector('p a')?.getAttribute('href'),base+routeUrl(route).slice(1));
+ dom.window.close();
+}
 for(const file of ['404.html','.nojekyll','robots.txt','sitemap.xml'])assert.ok(fs.existsSync(path.join(dist,file)));
-assert.ok(fs.readFileSync(path.join(dist,'robots.txt'),'utf8').includes('Sitemap: '+origin+base+'sitemap.xml'));
-for(const entry of new JSDOM(fs.readFileSync(path.join(dist,'sitemap.xml'),'utf8'),{contentType:'text/xml'}).window.document.querySelectorAll('loc'))assert.ok(entry.textContent.startsWith(origin+base),'Sitemap URL escapes site base');
+assert.ok(fs.readFileSync(path.join(dist,'robots.txt'),'utf8').includes('Sitemap: '+origin+'/sitemap.xml'));
+const sitemap=new JSDOM(fs.readFileSync(path.join(dist,'sitemap.xml'),'utf8'),{contentType:'text/xml'});
+assert.deepEqual([...sitemap.window.document.querySelectorAll('loc')].map(entry=>entry.textContent),siteRoutes.filter(route=>!route.draft).map(route=>canonical(route.path)));
+sitemap.window.close();
 assert.ok(!fs.existsSync(path.join(dist,'projects/dresden')));
 const report={base,pages,legacyRedirects:Object.keys(legacyRoutes).length,checkedLinks,checkedFiles,diagnosticsExcluded:true,dresdenExcluded:true};
 fs.writeFileSync(path.join(dist,'release-check.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
