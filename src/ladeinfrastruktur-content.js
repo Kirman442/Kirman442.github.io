@@ -175,8 +175,8 @@ export default {
           "**[Geofabrik: Germany](https://download.geofabrik.de/europe/germany.html)** und **[OpenStreetMap](https://www.openstreetmap.org/copyright)** – Straßennetz und Nutzungsbedingungen unter der ODbL.",
           "**[OSM: access](https://wiki.openstreetmap.org/wiki/Key:access), [oneway](https://wiki.openstreetmap.org/wiki/Key:oneway), [turn restrictions](https://wiki.openstreetmap.org/wiki/Relation:restriction)** – Erläuterungen zu den im Modell berücksichtigten Straßentags.",
           "**[AFIR – Verordnung (EU) 2023/1804](https://eur-lex.europa.eu/legal-content/en/ALL/?uri=CELEX%3A32023R1804)** – Hintergrund zum Ausbau der Infrastruktur für alternative Kraftstoffe.",
-          "**[Datenmodell der Ladeinfrastruktur](https://github.com/Kirman442/charging-points/blob/main/public/data/README_charging_tables_zstd10.txt)** – Zusammenfassung von Ladeeinrichtungen zu Standorten, 75-Meter-Regel, Leistungsangaben, Öffnungszeiten und Quellenangabe BNetzA / CC BY 4.0.",
-          "**[Aufbereitung der BKG/KBA-Gebietsdaten](https://github.com/Kirman442/charging-points/blob/main/public/data/README_emob_boundaries_string.txt)** – Geometrieumwandlungen und Angaben zu den Datenquellen.",
+          "**[Kennzahlen und Filter in der Anwendung](https://gis.krmn.app/charging-points/?section=info&help=metrics)** – Ladeeinrichtungen werden nach der 75-Meter-Regel zu Standorten zusammengefasst. Die Anwendung erläutert Leistungsangaben und den 24/7-Filter. Registerdaten: BNetzA / CC BY 4.0.",
+          "**[BKG/KBA-Gebietsdaten in der Anwendung](https://gis.krmn.app/charging-points/?section=info&help=sources)** – Geometrieumwandlungen und Angaben zu den Datenquellen.",
           "**[Arrow: Columnar Format](https://arrow.apache.org/docs/format/Columnar.html)** und **[deck.gl: binary data](https://deck.gl/docs/developer-guide/performance#use-binary-data)** – technische Dokumentation zu Datenformaten und Visualisierung.",
           "**[README des Projekts](https://github.com/Kirman442/charging-points#readme)** – Funktionen, Einschränkungen, lokaler Start und Veröffentlichung."
         ]
