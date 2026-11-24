@@ -11,7 +11,7 @@ export const siteRoutes=[
   {path:'/projects/accidents',kind:'story',projectId:'accidents',lang:'de',title:'Unfallkarte Deutschland - Karten & Code',description:'Verkehrsunfälle mit React, Supabase und deck.gl visualisieren.'},
   {path:'/projects/unfallatlas',kind:'unfallatlas',lang:'de',title:'Unfallatlas Deutschland - Karten & Code',description:'Regionen, Zeiträume und Beteiligte im Unfallatlas vergleichen.'},
   {path:'/projects/ladeinfrastruktur',kind:'charging',lang:'de',title:'Ladeinfrastruktur - Karten & Code',description:'Versorgung und Erreichbarkeit von Ladepunkten untersuchen.'},
-  {path:'/projects/bayern',kind:'story',projectId:'bayern',lang:'de',title:'Bayern auf einen Blick - Karten & Code',description:'Eine interaktive Karte der Städte und Regionen Bayerns.'},
+  {path:'/projects/bayern',kind:'story',projectId:'bayern',lang:'de',title:'Bayern auf einen Blick - Karten & Code',description:'Einwohnerzahl und Bevölkerungsdichte in Bayerns Gemeinden, Kreisen und Regierungsbezirken auf einer interaktiven Karte vergleichen.'},
   {path:'/projects/kunstkarten',kind:'story',projectId:'art',lang:'de',title:'Städte als Kunstkarten - Karten & Code',description:'Mit Python und OpenStreetMap den grafischen Charakter einer Stadt entdecken.'},
   {path:'/projects/flusssystem',kind:'story',projectId:'rivers',lang:'de',title:'Die Wege des Wassers - Karten & Code',description:'Flusssysteme mit Python und offenen Geodaten visualisieren.'},
   {path:'/projects/ubahn',kind:'story',projectId:'metro',lang:'de',title:'Berliner U-Bahn - Karten & Code',description:'Die Geschichte des Berliner U-Bahn-Netzes kartografisch erzählen.'},

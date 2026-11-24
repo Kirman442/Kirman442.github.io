@@ -1,54 +1,127 @@
-import { siteUrl } from "./site-paths.js";import React from 'react';
+import React from 'react';
+import CodeBlock from './CodeBlock.jsx';
 import MapEmbed from './MapEmbed.jsx';
-import Code from './CodeBlock.jsx';
-import ProjectGallery from './ProjectGallery.jsx';
-import ImageComparison from './ImageComparison.jsx';
-import { AppendixProvider, AppendixLink, TechnicalAppendix, AppendixSection } from './TechnicalAppendix.jsx';
-import { galleries } from './gallery-data.js';
-import { py1, py2, py3, py4, py5, Fluss1, Fluss2, Fluss3, Fluss4, Cluster1, Cluster2, Cluster3, Cluster4, Cluster5, Cluster6 } from './kartenCode.jsx';
-export const contents = [{ "id": "story-start", "title": "Einleitung" }, { "id": "section-2", "title": "Kepler.gl vs. Deck.gl: Analytisches Werkzeug vs. Programmierplattform" }, { "id": "section-3", "title": "Datensatz: Umfang und Struktur" }, { "id": "section-4", "title": "Entwicklungsphasen: Von den Daten zur Visualisierung" }, { "id": "section-5", "title": "Technische Feinheiten: Deck.gl – Das Geheimnis der Performance" }, { "id": "section-6", "title": "Blick in die Zukunft: Neue Karten, neue Daten, neue Entdeckungen" }, { "id": "map", "title": "Web-App" }, { "id": "sources", "title": "Datenquellen und Anwendungen" }];
-export default function BayernArticle() {return <div className="mobile-network-article migrated-article"><h2 id="story-start">Einleitung</h2>
-    <p>
-                                Ich interessiere mich schon seit langem für geografische Visualisierungswerkzeuge.  Vor allem, nachdem ich die Kepler.gl-Bibliothek kennengelernt hatte.  Ursprünglich von Uber entwickelt, wurde Kepler.gl für die Bedürfnisse von analytischen Abteilungen geschaffen, die ein tieferes Verständnis der städtischen Dynamik suchen.  Uber Engineering verfügt über kolossale Mengen an Geodaten von Tausenden von Autos, die täglich in verschiedenen Metropolen der Welt unterwegs sind.  Kepler.gl wurde als effektives Werkzeug für die Analyse und Interpretation dieser Daten entwickelt, das ein „Live-Bild“ des Stadtverkehrs ermöglicht.</p>
-    <p>Unabhängig davon, welche konkreten Werkzeuge und Technologien man verwendet, besteht der Prozess der Erstellung einer Datenvisualisierung normalerweise aus einigen wichtigen Schritten: Datenerfassung, Vorverarbeitung, die untersuchende Analyse der vorbereiteten Daten und schließlich die Erstellung der eigentlichen visuellen Darstellung. Kepler.gl automatisiert und vereinfacht drei dieser vier Schritte in erheblichem Maße, was die Analyse und Visualisierung großer Mengen an Geoinformationen deutlich einfacher macht. Mit diesem Tool kann man relativ schnell und, was wirklich zählt, ziemlich eindrucksvoll eine interaktive Karte auf Basis eigener Geodaten erstellen.</p>
-    <h2 id="section-2">Kepler.gl vs. Deck.gl: Analytisches Werkzeug vs. Programmierplattform</h2>
-    <p>
-                                Aber Kepler.gl ist eher so ein „analytisches“ Werkzeug, für diejenigen, die Daten untersuchen.  Ich als Programmierer hatte jedoch Interesse an einem tieferen Verständnis der Mechanismen zur Erstellung solcher Visualisierungen, an der Möglichkeit, tiefer in den Prozess einzutauchen.  In diesem Kontext erregte Deck.gl meine Aufmerksamkeit.  Deck.gl, ebenfalls von Uber entwickelt, ist jedoch keine fertige Analyselösung, sondern eine Plattform, eine Programmbibliothek zur Erstellung maßgeschneiderter Visualisierungen auf Basis von WebGL.  Die WebGL-Technologie setzt natürlich ein gewisses Maß an technischem Fachwissen voraus, bietet aber im Gegenzug unzählige Möglichkeiten zur Feinabstimmung und Erstellung wirklich einzigartiger visueller Darstellungen.  Einer der Hauptvorteile von Deck.gl ist die Verfügbarkeit einer React-Komponente, die in Verbindung mit meiner Erfahrung in der React-Entwicklung vielversprechend für ein experimentelles Projekt erschien.
-                            </p>
-    <h2 id="section-3">Datensatz: Umfang und Struktur</h2>
-    <p>
-                                Als Themengebiet für das Experiment wurde Bayern gewählt.  Der im Projekt verwendete Datensatz umfasste etwa 2000 geografische Koordinaten von Städten (als Punktobjekte), polygonale Darstellungen von Regierungsbezirken (Bezirke), Landkreisen, kreisfreien Städten sowie eine Kontur Bayerns zur Visualisierung der Grenzen.  Obwohl der verwendete Datensatz nicht als extrem groß bezeichnet werden kann, erscheint er für die Zwecke der experimentellen Entwicklung und Demonstration der Möglichkeiten von Deck.gl als durchaus ausreichend.  Insbesondere die geometrische Komplexität von Polygonobjekten wie der kreisfreien Stadt Augsburg beläuft sich auf etwa 2400 Koordinaten, und jeder Bezirk hat durchschnittlich 14 solcher Objekte plus durchschnittlich 290 Stadtkoordinaten gibt, dann sorgt dies für eine gewisse Belastung bei der Visualisierung und dem Rendering.
-                            </p>
-    <h2 id="section-4">Entwicklungsphasen: Von den Daten zur Visualisierung</h2>
-    <p>
-                                Der Entwicklungsprozess des Projekts umfasste mehrere Schlüsselphasen, von der Suche und Aufbereitung der Daten bis hin zur direkten Implementierung der interaktiven Karte unter Verwendung der Bibliothek Deck.gl und des Frameworks React.js.  Der erste Schritt war die Suche und Sammlung der benötigten Geodaten.  Zu den Datenquellen gehörten sowohl offene Geoportale als auch spezialisierte Geodienste.  Die erhaltenen Daten stellten eine heterogene Mischung aus Formaten und Strukturen dar, was eine vorbereitende Verarbeitung und Konvertierung der Daten in ein einheitliches, standardisiertes Format erforderte, das für die Verwendung in Deck.gl geeignet ist.
-                            </p>
-    <p>
-                                Ein erheblicher Teil der Arbeit war der Entwicklung der React-Anwendung gewidmet, die als „Container“ für die interaktive Karte dient.  Im Rahmen der React-Komponente wurden die Logik zum Laden und Verarbeiten von Daten, zum Erstellen und Konfigurieren von Deck.gl-Layern sowie interaktive Bedienelemente für die Karte implementiert.  Für die Gestaltung der Benutzeroberfläche wurde das Framework Tailwind CSS verwendet, das Komfort und Flexibilität bei der Anpassung des Erscheinungsbilds der Anwendung bietet.
-                            </p>
-    <h2 id="section-5">Technische Feinheiten: Deck.gl – Das Geheimnis der Performance</h2>
-    <p>
-                                Performance ist die zentrale Herausforderung bei der Visualisierung großer Datenmengen auf einer Karte. Und Deck.gl löst sie mit Bravour. Wie? Das Geheimnis liegt in der intelligenten Arbeit mit Layern. Stellen Sie sich einen Künstler vor, der eine Stadt malt: Anstatt jedes Element immer wieder neu zu zeichnen, erstellt er Entwurfslayer – schnelle Skizzen von Konturen. Deck.gl verwendet Layer wie „Skizzen“, leicht und sparsam.
-                            </p>
-    <p>
-                                Beim Aktualisieren der Karte zeichnet Deck.gl nicht alles komplett neu. Es vergleicht die neuen „Entwurfslayer“ mit den alten und aktualisiert auf der WebGL-Leinwand nur die veränderten Details, wie ein Künstler, der nur Striche auf einem Gemälde korrigiert. Das „schwere“ Rendering findet nur dort statt, wo es wirklich notwendig ist.
-                            </p>
-    <p>
+import ProjectSources, {SourceResources} from './ProjectSources.jsx';
 
-                                Ein weiteres „Geheimnis“ sind die UpdateTriggers. Das ist wie ein Befehl an Deck.gl: „Pass auf, diese Parameter könnten sich ändern!“. Zum Beispiel die Farbe der Bäume je nach Jahreszeit. Die Daten über die Bäume sind dieselben, nur die Farbe ändert sich. UpdateTriggers ermöglichen es Deck.gl, solche „feinen“ Änderungen zu verfolgen und nur das Notwendige neu zu zeichnen, wodurch selbst bei komplexen Visualisierungen eine flüssige Darstellung gewährleistet wird.
-                            </p>
-    <p>
-                                Deck.gl – das ist die „Magie“ effizienter Arbeit mit Geodaten, basierend auf intelligentem Layer-Management und punktuellen Aktualisierungen. Effizienz und Dynamik – das ist sein Credo!
-                            </p>
-    <h2 id="section-6">Blick in die Zukunft: Neue Karten, neue Daten, neue Entdeckungen</h2>
-    <p>
-                                Das Ziel dieses Projekts war die praktische Untersuchung der Möglichkeiten der Bibliothek Deck.gl im Kontext der Erstellung interaktiver, geoinformatorischer Webanwendungen.  Die Aufgabe bestand darin, am Beispiel der Visualisierung bayerischer Geodaten die Effizienz von Deck.gl für die Arbeit mit Geodaten direkt im Browser zu bewerten.  Das Projekt war als experimentelle Plattform für die Erforschung der Funktionsprinzipien der Bibliothek, ihrer Stärken und potenziellen Grenzen konzipiert.  Als inspirierende Idee diente die Möglichkeit, die Leistungsfähigkeit von WebGL und den Komfort von React.js für die Erstellung einer modernen und informativen Kartenvsualisierung zu nutzen.  Letztendlich sollte das Projekt demonstrieren, inwieweit Deck.gl ein effizientes und flexibles Werkzeug für die Geovisualisierung ist und neue Horizonte für die Weiterentwicklung in diesem Bereich eröffnet.
-                            </p>
-    <p>
-                                Die Bayern-Karte ist nur der Anfang, ein erstes Experiment mit Deck.gl. Aber schon jetzt ist das Potenzial der Bibliothek für die Entwicklung moderner geoinformatorischer Webanwendungen erkennbar. Deck.gl ist ein leistungsstarkes und flexibles Werkzeug zur Visualisierung von Geodaten im Browser.
-                            </p>
+export const contents = [
+  {id: 'story-start', title: 'Einleitung'},
+  {id: 'section-2', title: 'Kepler.gl vs. Deck.gl: Analytisches Werkzeug vs. Programmierplattform'},
+  {id: 'section-3', title: 'Datensatz: Umfang und Struktur'},
+  {id: 'section-4', title: 'Entwicklungsphasen: Von den Daten zur Visualisierung'},
+  {id: 'section-5', title: 'Performance und Kartendarstellung'},
+  {id: 'bedienung', title: 'Bedienung: So funktioniert die Karte'},
+  {id: 'section-6', title: 'Was seitdem dazukam (2026)'},
+  {id: 'map', title: 'Web-App'},
+  {id: 'sources', title: 'Quellen und Dokumentation'},
+];
+
+const hoverExample = `new GeoJsonLayer({
+  id: 'districts',
+  data: districts,
+  getFillColor: district => {
+    if (district.properties.id === selectedDistrictId) return SELECTED_COLOR;
+    if (district.properties.id === hoveredId) return HOVER_COLOR;
+    return DENSITY_COLOR_SCALE(density(district));
+  },
+  updateTriggers: {
+    getFillColor: [selectedDistrictId, hoveredId],
+  },
+});`;
+
+function SourceLink({href, children}) {
+  return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+}
+
+const dataSources = [
+  {
+    name: <SourceLink href="https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html">Destatis · Gemeindeverzeichnis GV-ISys</SourceLink>,
+    paragraphs: ['Einwohnerzahlen und Fläche zum 31.12.2025. Die Bevölkerungszahlen beruhen auf dem Zensus 2022.'],
+  },
+  {
+    name: <SourceLink href="https://www.statistik.bayern.de/">Bayerisches Landesamt für Statistik</SourceLink>,
+    paragraphs: ['Statistische Berichte und Daten zu Bayern.'],
+  },
+  {
+    name: <SourceLink href="https://carto.com/basemaps">CARTO Positron</SourceLink>,
+    paragraphs: [<>Vektor-Grundkarte. Kartendaten © <SourceLink href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</SourceLink>.</>],
+  },
+];
+
+const libraries = [
+  {
+    name: <SourceLink href="https://deck.gl/">deck.gl</SourceLink>,
+    paragraphs: ['Darstellung und Interaktion der Flächen und Punkte.'],
+  },
+  {
+    name: <SourceLink href="https://maplibre.org/">MapLibre GL JS</SourceLink>,
+    paragraphs: [<>Vektor-Grundkarte, eingebunden über <SourceLink href="https://www.npmjs.com/package/@vis.gl/react-maplibre">@vis.gl/react-maplibre</SourceLink>.</>],
+  },
+  {
+    name: <SourceLink href="https://react.dev/">React</SourceLink>,
+    paragraphs: ['Benutzeroberfläche und Verwaltung der Kartenauswahl.'],
+  },
+  {
+    name: <>GeoPandas · <SourceLink href="https://github.com/mbloch/mapshaper">mapshaper</SourceLink> · d3-scale</>,
+    paragraphs: ['Python und GeoPandas dienten der ersten Vorbereitung der Geometrien. Das Node.js-Skript vereinfacht die Polygone mit mapshaper und verknüpft die Geodaten mit den amtlichen Zahlen. d3-scale berechnet die Farbskalen.'],
+  },
+];
+
+const documentation = [
+  {
+    name: <SourceLink href="https://deck.gl/docs/api-reference/core/layer#updatetriggers">deck.gl · updateTriggers</SourceLink>,
+    paragraphs: ['Wann deck.gl die von einem Accessor berechneten Attribute aktualisiert.'],
+  },
+  {
+    name: <SourceLink href="https://deck.gl/docs/developer-guide/base-maps/using-with-maplibre">deck.gl mit MapLibre</SourceLink>,
+    paragraphs: ['Gemeinsames Rendern von Fachlayern und Vektor-Grundkarte.'],
+  },
+];
+
+export default function BayernArticle() {
+  return <div className="mobile-network-article migrated-article">
+    <h2 id="story-start">Einleitung</h2>
+    <p>Ich interessiere mich schon seit Langem für geografische Visualisierungswerkzeuge. Besonders neugierig wurde ich, als ich Kepler.gl kennenlernte. Uber entwickelte das Werkzeug, um die Bewegungen Tausender Fahrzeuge in verschiedenen Metropolen zu analysieren und daraus ein Bild des Stadtverkehrs zu gewinnen.</p>
+    <p>Zu einer Datenvisualisierung gehören normalerweise die Erfassung, Aufbereitung und Analyse der Daten sowie ihre Darstellung. Kepler.gl erleichtert die Arbeit mit bereits erfassten Geodaten. Mit dem Werkzeug lässt sich schnell eine interaktive Karte aus eigenen Daten erstellen und für die Analyse nutzen.</p>
+
+    <h2 id="section-2">Kepler.gl vs. Deck.gl: Analytisches Werkzeug vs. Programmierplattform</h2>
+    <p>Kepler.gl richtet sich vor allem an Menschen, die Daten erkunden und analysieren. Als Programmierer wollte ich genauer verstehen, wie solche Visualisierungen entstehen und wie weit ich sie selbst gestalten kann. So kam ich auf deck.gl. Die ebenfalls bei Uber entstandene Bibliothek nutzt WebGL für individuell entwickelte Karten und Visualisierungen. Das setzt technisches Wissen voraus und bietet viel Spielraum bei der Gestaltung. Ihre React-Anbindung machte sie für mich zu einem passenden Werkzeug für dieses Experiment.</p>
+
+    <h2 id="section-3">Datensatz: Umfang und Struktur</h2>
+    <p>Die Karte zeigt 7 Regierungsbezirke und 96 Kreise als Flächen. Zu den Kreisen zählen 71 Landkreise und 25 kreisfreie Städte. Die 2.031 kreisangehörigen Gemeinden sind als Punkte dargestellt. Eine Kontur markiert die Landesgrenze Bayerns.</p>
+    <p>Für jede dieser Einheiten enthält der Datensatz die Einwohnerzahl insgesamt sowie die Zahl der Männer und Frauen und die Fläche. Aus Einwohnerzahl und Fläche berechnet die Anwendung die Bevölkerungsdichte. Bei den Gemeinden wird zusätzlich der Grad der Verstädterung angezeigt.</p>
+    <p>Die Bevölkerungszahlen haben den Stand <time dateTime="2025-12-31">31.12.2025</time> und beruhen auf dem Zensus 2022. Bayern hatte zu diesem Stichtag 13.245.503 Einwohner, München 1.505.036. Rund 36 Prozent der bayerischen Bevölkerung lebten in Oberbayern.</p>
+
+    <h2 id="section-4">Entwicklungsphasen: Von den Daten zur Visualisierung</h2>
+    <p>Für die erste Fassung habe ich offene Geodaten aus verschiedenen Quellen zusammengeführt und für die Karte aufbereitet. Die Anwendung ist in React geschrieben, die Oberfläche nutzt Tailwind CSS.</p>
+    <p>Heute erzeugt ein Node.js-Skript mit <code>npm run data</code> die Datendateien für die Karte. Es vereinfacht die Polygone mit mapshaper für die verwendeten Zoomstufen und rundet die Koordinaten auf ungefähr einen Meter. Das Skript lädt außerdem das Gemeindeverzeichnis von Destatis und ordnet Einwohnerzahlen und Flächen über den Amtlichen Gemeindeschlüssel (AGS) zu. Für Landkreise und Regierungsbezirke summiert es die Gemeindedaten. Gemeindefreie Gebiete gehen mit ihrer Fläche in die Berechnung ein.</p>
+
+    <h2 id="section-5">Performance und Kartendarstellung</h2>
+    <p>Die vereinfachten Polygone brauchen weniger Stützpunkte. Die kreisfreie Stadt Augsburg wird mit 92 Stützpunkten gezeichnet, der Landkreis Ansbach mit 283. Der Browser fordert die vier Dateien für Landesgrenze, Regierungsbezirke, Kreise und Gemeinden parallel an. Die erste Gebietsansicht kann angezeigt werden, sobald die Regierungsbezirke geladen sind. Kreise und Gemeinden stehen bereit, sobald ihre jeweiligen Dateien eingetroffen sind.</p>
+    <p>Die Vektor-Grundkarte CARTO Positron läuft in MapLibre GL JS. deck.gl zeichnet im selben WebGL-Kontext wie MapLibre. In diesem interleaved-Modus liegen die eingefärbten Flächen unter den Orts- und Gewässernamen der Grundkarte.</p>
+    <p>Beim Überfahren eines Kreises mit der Maus ändert sich seine Füllfarbe. Mit <code>updateTriggers</code> teilt die Anwendung deck.gl mit, wann es die Füllfarben neu berechnen soll. Die Geometrie bleibt bei dieser Änderung gleich. Der gekürzte Ausschnitt zeigt außerdem, wie der ausgewählte Kreis seine Hervorhebung behält.</p>
+    <CodeBlock code={hoverExample} language="javascript" />
+
+    <h2 id="bedienung">Bedienung: So funktioniert die Karte</h2>
+    <p>Die Karte führt von Bayern über den Regierungsbezirk und den Kreis bis zur Gemeinde. Ein Klick auf ein Gebiet oder auf einen Eintrag in der Seitenleiste wählt es aus. Die Karte richtet ihre Ansicht auf das gewählte Gebiet aus. Über die Pfadnavigation in der Seitenleiste, die Esc-Taste oder einen Klick auf eine freie Kartenfläche geht es eine Ebene zurück.</p>
+    <p>Die Seitenleiste zeigt Kennzahlen zur aktuellen Auswahl. Dazu gehören Einwohnerzahl, Fläche, Dichte und die Anteile von Männern und Frauen. Je nach Ebene zeigt sie auch den Bevölkerungsanteil an Bayern oder am Landkreis sowie den Rang nach Einwohnerzahl und Dichte. Die Liste darunter lässt sich nach Einwohnerzahl, Dichte oder Name sortieren. Ab 13 Einträgen erscheint ein Suchfeld. Das Überfahren mit der Maus hebt den zugehörigen Eintrag auf der Karte und in der Liste hervor.</p>
+    <p>Die Auswahl steht in der URL, zum Beispiel als <code>#bezirk=091&amp;kreis=09171</code>. So lässt sich dieselbe Ansicht als Lesezeichen speichern oder als Link weitergeben. Auf dem Smartphone sitzt die Seitenleiste am unteren Rand und lässt sich auf drei Höhen einstellen. Die Legende kann eingeklappt werden.</p>
+
+    <h2 id="section-6">Was seitdem dazukam (2026)</h2>
+    <p>Mit der ersten Karte wollte ich ausprobieren, wie sich bayerische Geodaten mit deck.gl im Browser darstellen lassen. Seitdem habe ich Datenaufbereitung, Darstellung und Bedienung weiterentwickelt.</p>
+    <ul>
+      <li>Die Bevölkerungsdaten zum 31.12.2025 werden bei der Aufbereitung aus dem Gemeindeverzeichnis übernommen.</li>
+      <li>Die neu gestaltete Seitenleiste bündelt Kennzahlen, Rangfolgen, Suche und Sortierung.</li>
+      <li>Die Flächen sind eben und ihre Farbe zeigt die Bevölkerungsdichte. Die Beschriftungen der Vektor-Grundkarte liegen darüber.</li>
+      <li>Ansichten lassen sich per URL teilen. Auf Smartphones passt sich die Seitenleiste an die verfügbare Höhe an.</li>
+    </ul>
+
     <h2 id="map">Web-App</h2>
-    <MapEmbed url="https://gis.krmn.app/bayern/" title="Bayern auf einen Blick" caption="React / react-map-gl / deck.gl" />
-    <h2 id="sources">Datenquellen und Anwendungen</h2>
-    <dl className="mobile-network-resources"><div className="mobile-network-resource"><dt>Python packages and libraries:</dt><dd>Geopandas , Json , OSMnx, d3-scale</dd></div><div className="mobile-network-resource"><dt>react-map-gl</dt><dd><a href={siteUrl("https://visgl.github.io/react-map-gl/")} target="_blank" rel="noopener noreferrer">Part of vis.gl's Framework Suite</a></dd></div><div className="mobile-network-resource"><dt>deck.gl</dt><dd><a href={siteUrl("https://deck.gl/")} target="_blank" rel="noopener noreferrer">Framework for data analysis of large datasets</a></dd></div><div className="mobile-network-resource"><dt>React.js</dt><dd><a href={siteUrl("https://react.dev/")} target="_blank" rel="noopener noreferrer">React library for web interfaces
-                                            </a></dd></div><div className="mobile-network-resource"><dt>Statistische Berichte und Daten:</dt><dd><a href={siteUrl("https://www.statistik.bayern.de/")} target="_blank" rel="noopener noreferrer">Bayerisches Landesamt für Statistik</a></dd></div></dl></div>;}
+    <MapEmbed url="https://gis.krmn.app/bayern/" title="Bayern auf einen Blick" caption="React / MapLibre / deck.gl" />
+
+    <ProjectSources
+      data={<SourceResources rows={dataSources} />}
+      libraries={<SourceResources rows={libraries} />}
+      documentation={<SourceResources rows={documentation} />}
+    />
+  </div>;
+}
